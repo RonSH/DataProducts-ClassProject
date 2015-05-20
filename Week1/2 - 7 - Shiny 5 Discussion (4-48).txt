@@ -1,0 +1,157 @@
+So, you can get a lot tighter control over
+style.
+So, all the style limits are handled
+through ui.R.
+But, I think the first time I did this,
+now I just use ui.R.
+But, the first time I did this I was
+frustrated
+and I wanted a lot more control over the
+style.
+So, you can actually have a generic HTML
+file.
+Rather than a ui.R function which means
+then
+you get all the, everything you can with
+HTML.
+So this link in the, in the notes goes to
+the HTML needed.
+What you have to do is just instead of a,
+get
+rid of your ui.R function and create a, a
+directory called www.
+And in that directory have a file called
+index.html.
+And then when you go to this link, it'll
+show you that basically how you have to
+just have the, the, the inputs labeled in
+a specific way and then shiny will
+recognize them.
+And so, you just have to have specific job
+script libraries installed.
+And appropriately name IDs and classes.
+And, and this is sort of beyond the scope
+of this class but, I think for many of
+the students in the class, you know,
+things like
+HTML are, and JavaScript are very easy for
+them.
+And, I think if you're familiar with
+JavaScript and HTML you, and, and if
+you've learn this amount of shiny just
+from this lecture thank going to have.
+Any looking HTML page that you want with
+shiny
+embedded in it should be a relatively
+minor step.
+So then you can get it to look however you
+want then.
+But just go to this link and follow the
+conventions that they suggest.
+Okay, so this is just bare bones intro to
+Shiny.
+Some other things you can do.
+You can upload or download files.
+From Shiny.
+You can have tabbed main panels.
+This is all within the standard UI.R
+function for tabbed main panels.
+You can have edited, editable data tables.
+That's neat.
+You can have dynamic user interfaces, so
+based on values
+that you input, it can then show you new
+controls.
+You can you know user defined inputs and
+outputs.
+Which you know, sort of like programming
+more shiny functionality.
+And then you can put a bit button so that
+shiny only
+executes code after the user hits submit
+even for the first time.
+That's covered in the tutorial on shiny
+two as well.
+So, how do you distribute a shiny app?
+So everything [UNKNOWN] when you run
+runapp on
+your computer, you're running a little web
+server
+and your browser's going through local
+host to
+that web server and just connecting within
+your computer.
+But maybe you want to deploy it on the, on
+the web.
+The quickest way, is just to, you know,
+either
+put it on gist, or gifthub, or dropbox, or
+whatever.
+And send someone the app.
+And then they can call run app, and they
+can run it just like you would in
+development.
+That's pretty easy.
+If you really want to be fancy you can
+create
+an R pack and create a wrapper that call
+runapp.
+But all these solutions of course only
+work if
+the user that you want to reach knows R.
+If they don't knows R, R then this isn't
+an option.
+You can run a Siny, Shiny server, which of
+course
+requires setting up a Shiny server, which
+the instructions are here.
+If you know a little bit of Linix server
+administration, then that goes a long way.
+You don't need to know a ton.
+It made it pretty easy.
+Probably one of the easy solutions for
+that is you have to write, you
+could run it on a virtual machine,
+where they already have Chinese servers
+running well.
+So if yo run it on Amazon AWS or something
+like that.
+You know, then, then, you might yourself
+kind of, you might make your life a
+little bit easier if you can find
+an instance where people have already done
+it.
+And of course, you have to have all of the
+ports open in the right way and all that
+sort of
+thing.
+There's others, there's groups, our studio
+is one
+of them that's creating Shiny hosting
+services, so.
+They give you the Shiny server and you
+just create
+the app on their platform and then they
+host it.
+By the way, you know, if you're like me,
+one
+of the first things you do when you found
+Shiny.
+Is you try to extend it, kind of,
+ludicrously.
+And the, you know, R has the system call,
+where you can call.
+For example, Unix terminal, don't do that.
+So, don't put system calls in your code.
+It introduces a lot of security concerns
+and
+it's not really, in the intention, you
+know, Shiny's
+really for deploying statistic apps not
+for running
+generic server side scripts with R as the
+intermediary.
+Course, why would it?
+You know, there's already things to do
+that.
+

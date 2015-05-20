@@ -1,0 +1,76 @@
+Okay so, let, let me go through showing an
+image.
+How to embed an image.
+So and then let's put a slider on it.
+The, the, we're going to create a
+histogram and put a
+slider on it so that the user has to guess
+the means.
+So what I'm going to do is I'm going to
+create in my
+Side Bar panel a slider input, mu, is
+going to be my label.
+I'm going say, guess the mean.
+You're going to start at a value of 70.
+It's going to slide from 62 to 74.
+And the step size is going to be 0.05.
+And then, muHist in my main panel is not
+defined in this file.
+It's defined in my server.R file where I
+define it as
+the histogram I create based on my, the
+calculations that get done.
+Okay.
+So new hist is my label for my output
+created for my server.R function.
+Here is my server.R function.
+so, it's telling them the data set that I
+need to grab,
+any library calls, So here render plot is
+like render print only it's going to
+render a plot.
+Here's my histogram, and then here's the
+just some
+generic rcode, it grabs the input value,
+it adds lines at that input value and
+then I, I give the person their mean
+squared error and I
+tell them what their mu value and their
+main squared error is.
+This all gets rendered in a variable
+called newHist in my output,
+so the newHist will be the HTML label that
+the UI function is calling.
+And it looks something like that.
+So there, there, there you go.
+And let's see it in action.
+Okay, here it is in a tab for Chrome.
+Here's my slider.
+I'm going to change it and see it changes
+my red line.
+And here's my mu value, and my mean
+squared error.
+Right?
+And so, that's a nice little function that
+you can do.
+And it shows how you would, how it's
+rendering the image.
+So, okay.
+So, what's happening, right, is my ui.r is
+telling
+Shiny to create an HTML page with the
+slider.
+The slider creates a, a something a thing
+with a label.
+That label receives the numeric input
+value.
+That input value is passed to server.R.
+Server.R gives the instructions back to
+render the markup,
+giving it the plot and the output values,
+right, that go, go
+back with the instructions from UI.R to
+giving it on how to mark it up.
+okay.
+Very neat, right?
+

@@ -1,0 +1,118 @@
+Okay, so, one thing you need to know about
+Slidify is
+how do you kind of specify some of the
+main options.
+So the, the way you do it is with this so
+called YAML at the beginning of
+the slide, so YAML is what stands for
+YAML, yet another mark down lang-,
+yet, yet another mark down language, or
+something like that.
+Anyway, it's this specific format, where
+you
+have a bunch of fields of parameters, and
+then a colon, and then the values that
+they take, with the pound sign meaning
+comment.
+okay, so, you know, here's title, would
+just be the title
+of your presentation, subtitle would be
+the subtitle of your presentation.
+And the slide framework.
+And the highlighter.
+We'll talk about this, the framework will,
+will do the formatting for you.
+So, it'll to, decide what size the title
+is rendered at.
+What size the subtitle.
+Author is you.
+You know, write your name, your job is,
+your job
+you can leave some of these, you can leave
+these blank.
+The highlighter talks about some of the
+effects.
+And the theme is, again, a theme.
+You can play around with those and see
+what they do.
+The, the widgets talks about some
+mathjaxes for math, mathmat, mathematical
+equation rendering.
+Quiz is for these kind of automated quiz
+things.
+Bootstrap is the Twitter bootstrap style.
+Which is CCS style that I guess Twitter
+created.
+The mode you know, the, the mode will
+depend on where and when you intend to
+give the presentation so you know, if you
+would, you would use a different one, for
+example.
+Self contained, or draft, or stand alone.
+Depending on whether or not you would have
+Internet
+access while you're giving the
+presentation, and so on.
+if, if you know, Slidify will grab all of
+the libraries and copy them, or it can, it
+can read them directly off of the Internet
+at the time of giving the presentation.
+Just like JavaScript.
+You can either have JavaScript loaded in
+the, you know, you know,
+if you have JavaScript saved in some files
+that the webpage is importing.
+You can have it saved locally or you could
+grab it from some other source.
+Okay, so.
+Let's see, so this just repeats what I've
+already said.
+The highlighter, oh yeah, and, and I
+should have mentioned the code, the
+highlighter
+is the code highlighter, and we'll go
+through some code examples in a minute.
+There's some other fields you can, you can
+use, for example, if
+you have a specific place you want your
+assets direct, directory to be.
+If you have a logo and you want it loaded
+in, and so on,
+but you know, I think a lot of these are
+kind of
+options that you will kind of, learn as
+you need to learn
+them.
+So, this is the YAML for the presentation
+I'm actually giving right now.
+Well it's not exactly the presentation,
+because I pretended like I wrote
+it, when in fact, Jeff actually wrote
+these slides, for the most part.
+[SOUND]
+so.
+What, so what do you do then?
+Okay, after you've done editing your
+YAMLs, you've got kind of
+a slide style that you're interested in,
+and you could go through
+Ramnes web site, or a lot of the, there's
+tons of
+Slidify information on the Internet to
+find different themes that you like.
+And so on.
+This is in the IO theme.
+Google IO theme, which was created by
+Google for one of their developer
+conferences.
+And and it's, it has been an open source,
+so a lot of us use it.
+So the nice thing about mark down is, is
+for example,
+if you want an ordered list, you just
+write one, two, three.
+And then, when you Slidify this list, it
+renders
+it as, as an HTML ordered list, enumerated
+list.
+

@@ -1,0 +1,154 @@
+Other stuff I don't, I don't actually
+really know.
+Leaflet's a mapping library.
+So, here's an example of using Leaflet.
+So here's Leaflet new.
+Right?
+And I'm setting the view for the specific
+location exactly.
+Setting the zoom level and so on.
+And this will show you.
+You'll see what these settings, markers
+does when I go onto the next page.
+And then the save function is just saving
+it like before.
+Now map three is in rCharts so it has
+all the same fields that any other rChart
+does.
+So here I'm using save and then this cap
+is just to bring it into slidify.
+And then you see here in my presentation
+is my map.
+You know, you can zoom, and you can zoom
+in it.
+And if you hover over, you see that I'm a
+pop up, I'm another pop-up, so you
+see how you can set the pop-ups at
+specific longitude and latitude locations.
+So Leaflet's pretty neat.
+So if you need to create a map and there's
+he has a new kind of documentation
+for the set of different kind of mapping
+things you can do and Leaflet is pretty
+cool.
+Rickshaw is another one, that he shows.
+You can go through the code but you can
+get things like this.
+It has a nice you know, a nice little bit
+of interactive graphics you can get in it.
+It has a slider right?
+So you can slide over time, and see how
+the
+how these kind of continuous spark charts
+change over time.
+That is kind of nice.
+High chart.
+Here's another one.
+I, I'm not exactly sure what high chart.
+This plot seems really quite confusing to
+me.
+but, but, you know, it, it, it does seem
+to have a lot of interactivity,
+and I think that the, the reason it is
+confusing is he is just trying to
+highlight not that he is trying to create
+a perfect plot but that he is trying
+to sort of highlight, you know, oh here's
+how you get the line, the bubble, and
+the scatter for the different types.
+Right for the, for the grouping variable
+and that's why
+you get for the grouping variable you get
+the different ones.
+So you see it's actually quite easy.
+It makes kind of you know, kind of an ugly
+some what,
+somewhat sort of useless plot, but, but it
+shows you know the bubbles,
+the size, kind of the size of the bubble
+is related to the
+is, is related to the what is the, size is
+related to age.
+And so and so you can go through that
+example.
+But that's, that's why I believe he is
+doing it.
+And it's nice because you can, you do see
+themes like this that are very hard to
+do in R, like the transparent overlays and
+things like that that are quite hard to
+do.
+So anyway I'm hoping that going through
+these
+examples shows you that, you know,
+basically I find
+to use rCharts, is you kind of find an
+example
+that's close enough to what you need to
+do.
+And tinker around with it.
+And you may have to dig through the Stack
+Exchange posts.
+So what I would say is, rCharts
+makes creating interactive JavaScript
+visualizations very easy.
+But if you want to customize rCharts then
+you are really need
+to know the, the, the underlying internals
+of the JavaScript libraries.
+Rob Naus has told us that he is working on
+kind of
+a giant collection of master documentation
+and I think that will help.
+That will help you customize.
+The documentation will help a lot.
+But even probably after that documentation
+is completed, it's, your still going to
+need to know some JavaScript in order to
+really make use of this.
+it, so if what you want to do is not to
+big of a deviation from, the several
+rCharts examples, then it's, it's awesome
+and, which
+is great because rCharts has a lot of
+examples.
+And then otherwise it's just a little bit
+challenging to extend
+and then you know rCharts is still under
+development and I
+think it's easily the best package right
+now, or one of
+two of the best packages for creating
+JavaScript visualizations using R.
+The other probably being GoogleViz, which
+we will have a lecture on as well.
+But it's a very nice tool and it takes you
+know, to get
+it at the level that I'm presenting it at,
+that's presentational, it should
+take you a little bit of time to learn
+maybe a little you
+know, getting through a couple of the
+annoyances it shouldn't be too bad.
+But you the other thing I would mention is
+it
+is quite nice to be able to embed into
+slidify documents.
+however, I would once again really caution
+if, if that's your goal to
+always have the latest version of slidify,
+slidify libraries, rCharts, and rStudio
+all installed.
+And that will help, that will very much so
+help you avoid some of the problems.
+The other thing I would mention is to
+delete sort of the assets and other kind
+of temporary libraries that slidify in in,
+in
+the, in the old graphs that you've saved.
+and, and recompile if you are having
+errors.
+These are things that all seem to help
+me to get the satisfy rCharts combination
+debugged.
+

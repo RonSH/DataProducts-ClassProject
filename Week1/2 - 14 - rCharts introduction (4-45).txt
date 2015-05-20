@@ -1,0 +1,133 @@
+Hi, my name is Brian Caffo.
+I'm a Professor in the Department of
+Bio-Statistics at
+the John Hopkins Bloomberg School of ch,
+Public Health.
+And this is the rCharts lecture, part of
+the
+data products class in the Coursera Data
+Science Specialization.
+This class is co-tea, co-taught by my
+co-instructors, Jeff Leek and Roger Peng.
+So, rCharts, eh, rCharts are, is a really
+awesome little piece of software.
+So, it's basically just er, a way
+to create interactive JavaScript
+visualizations using R.
+So what this means is you don't have to
+learn complicated tools like D3.
+But if you really want to get into, to
+this kind
+of stuff you need to learn D3 and
+JavaScript really well.
+You can simple, simply work in R with
+a, with a minimal amount of new syntax
+learning.
+And rCharts was written by Ramnath, a, a
+close friend of the Data Science Series
+who also wrote Slidify, the framework we
+use for all the lectures in the class.
+And rCharts can be embedded in Slidify,
+and I'll
+show you that in the process of doing this
+lecture.
+At any rate, you know, rCharts, is pre, is
+fairly well documented.
+And but, but more, I guess, better than
+documentation is
+the, kind of, flurry of Stack Exchange
+topics about it.
+And so you know, basically I'm just
+going to go through the documentation here
+with you.
+So what rCharts is, so you have to install
+it,
+and the documentation, of course, shows
+you how to install rCharts.
+You install it from GitHub.
+So you want to do library required
+rCharts.
+Haireye is here just reformatting a data
+frame from this data set HairEyeColor.
+And so the basic function for a specific
+type of rChart is nPlot.
+So nPlot calls a specific JavaScript
+plotting library.
+And in this case the, notice the syntax.
+It's pretty familiar, right?
+So we want the frequency plotted as it
+depends on hair color, almost like a
+linear model.
+And here we want it grouped by eye color
+and the type is multiBarChart.
+And and, and here it's, there's just some
+data subsetting, so if you specify data
+command.
+So it actually looks an, an awful lot like
+LM.
+If you do this in R with no, with, without
+that there,
+don't assign the plot to a value, it
+brings up the plot.
+If you don't, if you assign the plot to
+a value, for me it's not bringing up the
+plot.
+But then this object has list element has
+a bunch of objects saved in it.
+And so for one is the function save.
+And then you just can grab that function
+save and give it a name.
+In this case, I wanted to name this plot
+n1.html.
+And it saves an HTML file with the,
+relevant, with
+the relevant code in it to produce the
+flot, plot.
+And so here, now, when I want to embed it
+back into Slidify, I actually type this
+command, icat, which is just print out
+this
+frame, iframe, where I source in this
+html.
+And, and Ramnath said that was sort of
+best practices from vetting a, rChart into
+Slidify.
+But if you don't want to embed it into
+Slidify, you could just either type
+n1 by itself on the command line or forget
+assigning n1 to a plot.
+Just type nPlot and you'll get the plot
+that we [INAUDIBLE].
+Okay, let me, let me just give a couple
+caveats here, is that
+I just had to actually stop the video and
+re-run a bunch of things.
+because I was working across different
+computers
+and I had to reinstall the latest version
+of Slidify and the latest version of
+rCharts
+to get the embedding within R to run.
+Otherwise, it seems to be the rCharts
+seems to have had no problems.
+It's this idea of embedding rCharts into
+Slidify that is maybe a little finicky.
+At any rate, it seems like I got it to
+work now.
+So here's the n1 plot, and you can see the
+colors
+on the horizontal axis right here the hair
+colors, right?
+And then you see the eye colors as the
+actual colors of the bars, right?
+And if you hover over a bar, it gives you
+the frequency and the information on hair
+and eye color, right?
+And so this interactivity comes with very
+little cost.
+And you can even do stuff like switch
+between grouped and stacked bar plots
+and notice it has kind of a nice animation
+when it does it, right?
+And so remember, right, the
+

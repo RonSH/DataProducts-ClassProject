@@ -1,0 +1,114 @@
+In some cases, you may want your reactive
+code to not be so reactive.
+Which I know sounds ludicrous.
+But, let me explain.
+Basically sometimes you don't want Shiny
+to
+immediately perform reactive calculations
+from widget inputs.
+So notice, in all my previous examples,
+when I input, input a text
+it immediately did the calculations as
+soon as it got the chance to.
+However, you know, often your calculations
+are expansive.
+And you simply don't want the reactivity
+to occur
+immediately, you want the user to input
+them, think
+about them and make sure they got it set
+right and then push Go, or something like
+that.
+So, in other words, you, you want
+something like a submit button.
+Something, and, and it's very simple to do
+this.
+And let's see, so I'm still doing the page
+with the side bar.
+Hello Shiny, is my header I keep putting
+in it.
+So here I have, text1, is my input for
+Text1, text2 is my
+Text2 input, and then I'm going to put an
+action button, called go button.
+So, the label is goButton, and the, the,
+I, I'm sorry, the input
+ID is goButton, and the label above the
+button will be Go, exclamation point.
+And then the main panel, you'll see
+it, it's just outputting text1, text2,
+text3, okay.
+And then my server.r in my server.r
+function here, I'm just going to in,
+output text1, I'm going to output text2.
+And then, in the text3, I'm going to,
+dependent.
+Make the execution of that reactive code
+dependent on the go button, okay?
+And so, I'm going to, you know, sort of
+create this dependency on the go button
+right here.
+And then, this isolate statement will
+isolate doing
+that statement until the button is
+pressed, okay?
+So, let's try it.
+Okay.
+Now we hit a, hit b just like before,
+notice when I change a to c, it changes
+there.
+When I change b to d, it changes there,
+and when
+I hit Go, it displays both of them, c and
+d.
+Right?
+I could change this to e, f.
+You know, I could write in data products
+here.
+Right?
+Whoops, I want it up here, I don't want
+data products
+up there and then it is cool, are cool,
+[LAUGH] are cool.
+Okay?
+And it doesn't, notice it says, you know,
+data products there and is, are cool
+there, but it won't concatenate it into
+the sentence until you press the button
+Go.
+Okay.
+And let, let's see.
+So, I have another example here.
+Let's I tried, just discuss what we saw.
+It doesn't display text3 until the Go
+button is pressed.
+The variable input go button, it gets
+incremented every single time you press
+the button.
+So, you can actually use that to create
+conditional statements.
+Sort of like, if go button equals 1,
+they you could say you've pressed the
+button once.
+So, here's the, replace the code in that
+other example where
+I said, if go button equals 0 then you can
+press the button.
+Let's say go button equals 1, you've
+pressed
+1, so then else, okay, quit pressing it,
+okay.
+Okay, so you can see the code over here,
+and then now let's look over
+here and input some text, okay, so I'm
+going to put just a and b there.
+And it, notice it reactively displays the
+text.
+It says, you have not pressed the button.
+I press the button once, you pressed it
+once, okay quit pressing it.
+Okay, so that's how you can build
+condition on
+the number of button presses statements
+into your reactive code.
+

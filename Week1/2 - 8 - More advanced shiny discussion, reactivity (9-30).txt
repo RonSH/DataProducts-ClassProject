@@ -1,0 +1,241 @@
+Hi, my name is Brian Kaffo in the
+department of
+Biostatistics at the Johns Hopkins
+Bloomberg School of Public Health.
+And this is the second lecture on Shiny,
+which I'm calling
+shinier, from the Coursera data science
+specialization in the data products class.
+The whole series and as well as this class
+is
+co-taught by my good friends Jeff Leek and
+Roger Peng.
+Okay, so last time we covered very basic
+Shiny, just how
+do you set up a UI how do you set up the
+server, and how do you get a very basic
+interactive webpage built in R.
+And if you're like most people.
+If you're like most people.
+You found the building the user interface
+pretty trivial.
+But had a hard time with the server.r
+part.
+And interacting with it because it
+behaves, shiny
+behaves very different than an ordinary R
+session.
+So what we're just going to do is cover a
+bit more details of Shiny.
+And there is since the writing of that
+first lecture, a more detailed tutorial
+has come out.
+And it is really great.
+So I would just go check that out at well.
+Okay, so let's just first start
+talking about what server.r is doing.
+So
+if you, if you.
+Put some code before the Shiny Server
+function in the server.R file.
+That just gets called once when you do run
+app.
+Code inside the unnamed, this unnamed
+function right here.
+In the shiny server statement,
+that gets executed every time there is a
+page
+refresh or a new user hits the, hits the
+website.
+Okay?
+So this stuff, the stuff that gets
+executed
+before the Shiny server function gets
+executed once.
+Once runapp is called and the rest gets
+executed every single time.
+There's a page refresher and new user and
+then
+reactive code is codes that are inside the
+the
+render statements, for example, render
+plot or render text.
+Statements in the shinyServer shinyServer
+statement and those get run repeatedly as
+needed when new values are entered into
+the widgets from ui.R.
+Okay so let's just go through some
+experimental code.
+I'll look at the code here and then I'll
+call up this app in just a second.
+All of this code is on the GitHub
+repository.
+so, we're going to do a page with sidebar,
+this is the UI, I just put hello
+shiny there because that was in the
+tutorial
+and I don't know why I keep doing it.
+So I'm just going to have two things, text
+input one, and text input two.
+I'm going to have two text input boxes.
+And then here I'm going to output a bunch
+of text and
+you'll see what my goal is in the
+outputting the text.
+noticed, the input text labels.
+The input lab, text labels, are text one
+and text two.
+And it looks, Oh, I'm sorry.
+The, that's the, the input ID's are text
+one and text two.
+The labels is the, this is just the, text
+that it's
+going to put in the, in the text box that
+you type into.
+And the output is maybe confusingly
+labeled text one,
+text two, text three, text four, and text
+five.
+Okay.
+Let's look at what servers doing.
+Okay.
+So here's what I'm doing.
+I'm using the double arrow sign just to
+make sure
+that everything is assigned outside of all
+environments, and globally assigned.
+Probably that's not necessary for these
+things that are outside
+of the shinyServer function but, maybe,
+might be necessary inside here.
+But, so, what i'm going to do is I'm going
+create a variable.
+X and I'm going to increment it plus one,
+so
+I'm going to define X and R before I run
+app.
+And then I'm going to set this variable Y
+to be zero
+and inside this Shiny surface function I'm
+going to increment it once.
+So here in output text four, I'm going to
+render y.
+In output text five, I'm going to render
+x.
+In output text one, I'm just going to
+render
+what got input in the text one input box.
+In output text two, I'm going to render
+what got input in the text two input box.
+And, output text three.
+I'm going to take text one and I'm going
+to add one.
+Okay.
+So let's try this.
+Okay.
+So here I have my
+here I have my server.r code.
+And let me just type, runApp.
+There's a thing called display mode.
+But let me, let me just run it normally
+right now.
+Okay.
+And here it is.
+Okay.
+So you can see it says, hello shiny.
+Okay.
+And in output text one, we haven't inputed
+anything, so that value is still null.
+So, when it prints it out, it is printing
+out nothing.
+Output text two we haven't input anything
+so that's null.
+Output text three, it's trying to add one
+to
+a value of null so that get returns in NA.
+Okay?
+And I've set X to zero, and then added one
+to it.
+So now, it's one and y, which is set to
+zero inside the function and is now set as
+one.
+Let's see what happens when we refresh,
+okay, oops, I'm sorry this is y.
+So now, notice Y is incremented to two,
+but X is still incremented to one, okay?
+And actually if I wanted to do this.
+I'm going to do this correctly.
+I'm going to stop that.
+Stop running the app.
+I want to set X to zero in the environment
+here.
+There we go.
+Okay so here you can see now X is one
+because it's incremented
+at once at the start of the run app
+statement, okay, and, and
+here's X right here and here's Y right
+here okay let's refresh.
+See now Y is two because it's executing
+this statement
+every single time there's a page refresher
+and new user.
+Okay.
+Now, let's input some text.
+Let's input X the first text one which
+input is two.
+Now, notice it's two and then, here.
+It's at three.
+Because this text, this text,
+is, the, the text one input plus one.
+Okay, now, let's try inputting five for
+this guy.
+Okay now it's five.
+Now, notice what happens if I change text
+two to six.
+Right?
+Notice it updated the, it updated this.
+But it didn't do anything to that.
+I, it waits until I update it, and then
+it will, it does, so Shiny only executes
+what's needed.
+Only the component of the code that's
+needed.
+And so the, the biggest mistake you can
+make in a Shiny app is to think of the
+Shiny function as something where the code
+just runs through it serially.
+These reactive text statements, these
+reactive code
+statements are reacting to the widget
+input.
+And, in, in, in a, in a
+manner that doesn't necessarily rerun this
+text, right.
+Doesn't necessarily rerun this one when
+it, when, when
+you input a new value for this one, okay?
+Okay, so that was our first example.
+Let's move on to another example.
+Well actually, now that I look at the
+notes, let me, let's just dis, dis,
+discuss it.
+Okay, so when you type runApp, hitting
+refresh increments Y,
+but entering values in the text box does
+not increment Y.
+You have to do a page refresh, or a new
+user would have to connect.
+X is always one, because that only gets
+executed once at the start of
+server.R, and then watch how text one and
+text two are updated as needed.
+And it doesn't add one to text1 every time
+a new text2 is input.
+Important to do this, I think.
+Try runApp() and then display.mode equals
+showcase.
+That's very useful for seeing what shiny
+is
+actually executing at the time that it is.
+

@@ -1,0 +1,531 @@
+Hey everyone, this lecture is going to be
+about building an actual r package.
+So we've already seen kind of what is in R
+package and what are the different
+components of the package.
+So I thought in this lecture I'd like to
+make do a little demo,
+and going to show exactly you know how to
+put all of the pieces together.
+In particular, how to do it in our studio
+which actually
+makes it pretty convenient So the package
+we're going to build today.
+Is going to be a very small package.
+It's only going to be two functions.
+And the functions in the package are going
+to be.
+Are going to build a prediction model for
+a high dimensional data set.
+Using just the top ten predictors.
+So if you want a little bit of a
+background on kind
+of what the rationale for this model is,
+I'll put a link up.
+You can look at the link right here.
+and, you can read more about it.
+So that's the package that we're going to
+build.
+It's going to be called the top ten
+package.
+And so, we'll do that in R studio.
+And you can see how you know everything is
+done.
+Okay, so the first thing that we need to
+do is start up R studio.
+So, let's just start it up here.
+And I might as well just make it full
+screen, while we're at it.
+Okay, so, this is the kind of the default,
+screen
+for R studio, the first thing we're
+going to want to do
+when we start on R project, sorry on R
+package project,
+is to kind of start a new project, I'm
+going to
+open up a project menu here and say new
+project
+and we want to start this project in a new
+directory,
+so I'll click on that then what we want to
+do
+is build in R package, and the name of R
+package.
+You can create whatever name you want, but
+I'm just going to call it the top ten
+package.
+Cause that's the predictor model that we
+are building, and it's going
+to be in the sub directory of my home
+directory which is fine.
+So I'll just hit create project.
+Okay.
+So you can see.
+That that puts me in the directory here,
+where where
+the packaged files are going to live, and
+you can see
+these are the package files here and you
+can see,
+it's kind of put up a bunch of default
+files
+in there, there is a description file, a
+namespace file
+and then, if you look in the R directory
+there
+is a, there is a file, there is a code
+file but you'll notice that there is
+actually nothing in it.
+So, we'll have to fill that up in just a
+second.
+let's.
+So let's just navigate this, file
+directory a little bit more.
+In the top level directory see there's a
+description file we talked about.
+If you open it up you'll see it's pre
+filled a bunch of the fields for you.
+It put the package in.
+Name in there for me.
+But we're going to have to fill our, you
+know, with
+the the title, the author, the maintainer,
+the description, etcetera.
+So why don't we do that just right now.
+So the title of this package is going to
+be, the top, excuse me.
+Just the we'll call it, building
+a prediction
+model from the top 10 features.
+And version 1.0 is fine.
+The date is fine.
+Who wrote it, so that's going to be me,
+let's say.
+Uh,the maintainer's going to be me, but
+the important thing, of course,
+about a maintainer is that there has to be
+an email address there.
+So it'll be me again.
+[NOISE]
+And then the description is just a little
+bit longer.
+Than the title so I'll just say you know
+build
+functions for [SOUND] prediction models
+from selecting.
+Actually building, let's say building and
+predicting from models from selecting
+the top ten predictors in a data set.
+Something like that.
+It doesn't have to be too long.
+And then the license, we'll just choose a
+nice, open source license like, Gnu Gpl.
+So, we'll just call that Gpl version 3,
+and that's our description file.
+So I'm just going to save that,
+and, by hitting command s.
+And then I'll just close it up because we
+don't need it anymore.
+So, I think at this point there really
+aren't any other files that
+we can fill out, so we might as well just
+start coding away.
+Okay, so the first thing we're going to
+want to do is build R top ten functions.
+Let's call it top ten.
+And we will take two arguments x and y.
+So the x is going to be the kind of matrix
+of predictors and y is going to
+be the vector of responses so p is the
+number of columns that is going to be p
+predictors.
+Uh,I think it doesn't really make sense to
+look
+at the top ten predictors if there aren't
+at
+least ten predictors, so we're going to
+say, we're going to
+check to see if p is at least ten.
+And if it's not we'll just stop.
+>> [SOUND] So the way this model works is
+basically, for each predictor
+in your kind of matrix of predictors, we
+fit a, a univariate
+regression model of the, of the response
+on each individual predictor.
+And then for each individual predictors,
+so there is going to be
+all these regression models that we fit
+and for each predictor,
+there is going to be a p value associated
+with that,
+that given predictor, you know, depending
+on how strong the association is.
+So, so for every predictor we're going to
+have a p value, and then
+what we're going to do is we're going to
+sort the p values from kind of
+smallest to largest and then we'll take
+the top ten smallest in this
+case p values, which indicate kind of
+the, the predictors of the strongest
+associations.
+So we'll take those top ten predictors,
+and then we'll fit a separate regression
+model
+with those ten predictors in it and that
+will be kind of the final prediction
+model.
+>> Alright so we're, first, so we've
+already
+checked to see if there's at least ten
+predictors.
+And we'll initialize our vector of p
+values here.
+This is going to be an empty vector of
+zeros.
+And the original loop through each of the
+predictors
+and righ, and fit univary regression
+models.
+And fit lm y to the x, and it'll [UNKNOWN]
+i.
+And then we want to, we want to get the p
+values out, so we need the summary of that
+model fit.
+And then the p values for that predictor,
+p value for that
+predictor, is just going to be the, key in
+the coefficients element.
+And it's the forth, column here.
+And so we are going to accumulate all of
+those p values.
+And then once we've done that, we want to,
+we'll look at.
+We want to sort the p values.
+We'll look at all of the ordering of p
+values.
+In order by default, we'll sort them for
+lower to
+giver the index indicies for the smallest
+to the largest.
+And then
+okay.
+So then and then we just want to take the
+top ten.
+So the so the the order, what we really
+want, just the, as one through ten here.
+And then we want a, so now we create a new
+data set called x10.
+With the kind of top ten predictors, from
+the old data set, the original data set,
+and fit this final linear model, [SOUND]
+and then grab the coefficients, from the
+model and
+so that's kind of what the top ten
+function returns.
+So we've got our top ten function, which
+kind of fits the model,
+it, it goes through all the p values and
+picks the top ten.
+So I'm going to write one for function
+that that takes the coefficients from the
+final fitted model, and it takes some,
+kind of, additional input vectors, and
+gives you a prediction for the new values,
+right, so it takes the
+coefficients and some data and gives you
+predictions, a predicted response for each
+one.
+So we will call that, lets call predict10
+and
+it's going to take a matrix of predictors.
+Now, this matrix can only have ten
+predictors in it because that's what
+the model, final mode says and then a
+vector coefficients is called b.
+And then it's pretty simple.
+We are going to do, first thing, we are
+going to do
+is I am going to add the intercepts to
+this matrix
+and then we're going to do a matrix
+multiplication of the
+new kind of data and the coefficients from
+the model.
+So, I'll do x times b is the matrix
+multiplication and then I want to
+drop the dimension eh, so that it gives me
+a vector I'll call drop.
+So this just returns a vector predicted
+responses.
+Okay, so we've got our code for the
+package it's pretty straightforward.
+Just this two functions, but in order to
+have
+a package of course, we need a, a bunch
+of other stuff; we need some
+documentation, and we
+need to be able to specify the namespace
+file.
+So the way that we're going to
+documentation in
+this package is we're going to use Roxygen
+2 package.
+And so the, what the, what's nice about
+this, the format is
+that allows you put all the documentation
+in the code file itself.
+And then what the Roxygen 2 package does
+is it strips out the documentation that
+you put
+in the code file and it makes the
+man pages, it formats it in the
+appropriate way.
+So, you don't have to worry about,
+documenting separate, writing out separate
+documentation files.
+Two nice things about this is one is that
+it kind of keeps you focused on one file.
+You don't have to kind of constantly
+switch back and forth.
+And the other thing is that since the
+documentation is actually
+close, physically close to the code,
+there's a better chance that the
+documentation will stay up to date because
+you'll be able to see
+if there are any discrepancies between the
+documentation and the code itself.
+So, let's go ahead and do that.
+So the first function I want to document
+here is
+the top ten function and so the first, so
+one
+of, I need to give it a, so the first you
+want to do is give it a little hash
+then the and then the apostrophe there,
+and I'll give
+it a title so I'll call it building a
+model
+with top ten features, and you can see
+that our
+studio nicely kind of insert those extra
+hashes for you.
+And I'll give a little title, description
+here so this function develops
+a prediction algorithm based on the top
+ten features in x that are most predictive
+of y.
+Okay seems reasonable.
+And then we want to start documenting some
+of
+the arguments so first we can use the
+parameter here
+say, there's an x argument and say this is
+a n by p
+matrix of n observations and p predictors.
+There's another parameter here called y,
+[SOUND]
+and this is a vector of length n
+representing
+the response, okay, and I will save the
+return
+value Is a vector of
+coefficients from the final fitted model
+with
+top ten features.
+There's a couple other things we can fill
+out.
+Such as the author, and that's me.
+If there's some extra details we can write
+out,
+somebody will write some details here for
+the reader.
+I'll say this function runs a univariate
+regression of y on each predictor in x
+and calculates a p-value indication
+the significance of the association.
+And, the final set of ten predictors is
+taken from the ten smallest.
+P values, okay, so that's a little
+description there.
+You might want direct readers to the LM
+function just in case,
+you know, they want to know where the hava
+linear models fit.
+Now what's important about, actually
+important about this function.
+First of all, it's going the be the
+function that we want to export.
+So we want to make sure that we export in
+the main space file.
+So we gotta put the export directive here.
+And then furthermore, because this
+function uses
+the LM function, which comes from the
+stats package, we need to import that
+function, so that we can use it.
+So we need to import from the stats
+package, the LM function.
+So that's going to go into the name space
+file.
+Alright, so that's our documentation for
+the top ten function.
+Now let's go down here and look at the
+predict ten function.
+So we gotta do, probably gotta do the same
+thing here.
+Start a little documentation with the
+prediction of the top ten features.
+And this will say this function instead of
+coefficience.
+Produced by the top ten function.
+And makes a prediction for each of the
+values provided in the input x matrix.
+Okay, it's in that little description
+there.
+So what parameters does this function have
+well.there's
+x there's b, then we know it returns
+a numeric vector
+containing the predicted values.
+Alright so what's x, this is an by 10
+matrix, containing n new observations.
+And then what is v?
+V is a vector of coefficients obtained
+from the
+top ten function.
+Alright.
+So, then, of course, we also want to
+export this function.
+So we hit the export directive.
+This function doesn't export anything
+special.
+So, we don't need an import directive.
+Alright.
+So, let's save that with command s here.
+Okay, so we've written our R-code.
+We've written some documentation in the
+R-code, and so now it's going to
+be time to kind of process
+this information and start building our
+package.
+So, let's see how we do that in R Studio.
+So in R Studio we can go over here to the
+build tab and you'll notice that this
+bill tab only exists if you, if your, if
+you've created a project that's
+specifically an R package okay.
+So let's try to build our package and then
+load it into R.
+Okay?
+So you can see that at the top, in the top
+window here,
+the R session has restarted, and then the
+top ten package has been loaded.
+Okay?
+So, one of the things you'll notice, if
+you go over here
+to the left, in the files, if you, let's
+go in the man
+directory here, Oh, and you see that
+there's a, there's a default kind
+of, documentation file here that talks,
+that just kind of describes the package.
+But you notice that the documentation
+files have
+not been created by the Roxygen 2 package.
+And so what we actually have to do is
+we gotta go into here and configure our
+build tools.
+And then we, what we want to do, we
+want to generate documentation
+with Roxygen and we want to create the RD
+file from the manual.
+Let's create the namespace file from the
+documentation in the, that we wrote.
+And then we'll do it when we build and
+reload.
+'Kay?
+This over here on the left this package
+documentation file is not required,
+so I'm just going to delete it because I
+don't feel like writing it.
+Alright, so let's build and reload R
+package again.
+And you'll notice now that the the two
+documentation files here for our code have
+been written,
+so if you look in the top10.rd file
+you can see all this information has been
+extracted
+from the the documentation that we wrote
+in the R file, so this is all of the
+stuff that we just wrote, and for the
+predict ten function again, another set of
+documentation here.
+So, Let's take a look at our top ten
+package here.
+I can do library, its already been loaded
+but lets take a, library help top
+ten, ops, and you can see here's the
+description file that we wrote
+out as a bit of information these the
+exported functions over here, ahm, if
+I look at, if I, I can print out the code
+for top ten.
+And you'll see that's the code that we
+wrote.
+If I do question mark top ten, you'll see
+that
+the documentation file that, has been
+built is right here.
+So, it, it's formatted nicely here.
+We can look at the documentation for
+predict ten.
+And you see that here's the documentation
+that we wrote.
+Should be all familiar to us.
+Let's bring this down.
+And so that's R package is pretty much
+all, most of the way there.
+If you want to see if it passes R command
+check, it's very simple.
+You just click the check button here and
+it will run our command
+check, it will build the package and then
+run R command check dot.
+And so you see all the tests are going by.
+[BLANK_AUDIO]
+Okay, so you can see that R command check
+finished
+and it looks like we passed all of the
+tests.
+You see everything is okay over here so
+that is a good sign.
+So I'm not going to upload this package
+this to command, but but we could upload
+to command because we would see that we
+pass our all the tests in R command check.
+So this very simple R package, we just
+wrote a little.
+We wrote two functions, but you can see
+that
+in R studio there are a lot of handy
+tools.
+For putting a package together and for
+building documentation files.
+And so try I,I encourage you to try it
+out and write, write some functions, maybe
+take some
+of the homework that you've done already
+and build
+in R package out of the functions that
+you've written.
+It's not too hard and particularly when
+you use
+the tools in R studio, you can go very
+quickly.
+

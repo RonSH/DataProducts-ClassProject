@@ -1,0 +1,140 @@
+We just covered shiny and shiny is a
+sledgehammer when it comes to creating
+interactive graphics and
+dynamic webpages and things like that
+relative to
+what I'm going to talk about now, this
+function Manipulate.
+Manipulate's just a nifty little package
+in our studio.
+And if you want to create a quick, dynamic
+graphic, you can't beat Manipulate for
+doing this.
+Anyway my name is Brian Caffo.
+I am a professor in department of bio
+statistics with John Hopkins Bloomberg
+school of public health.
+And this class along with the data
+products, entire data products class and
+Coursera
+data science specialization is co taught
+with
+my co instructors Jeff Leek and Roger
+Peng.
+Okay.
+So, let's talk about Manipulate.
+Manipulate is, if you just have to create
+a
+quick interactive graphic or interactive
+table or something like that.
+And you've gotta do it now.
+Like, you don't want to put a second of
+thought into it.
+The intended users for your function or
+whatever
+are also using R Studio and nothing else.
+Any rate, so Manipulate is a really cool
+solution that is often all you need.
+okay.
+So the other thing I was would mention is
+Manipulate, this is going to be a short
+lecture,
+because Manipulate is about as well
+documented as it
+needs to be at this our studio
+documentation there.
+From basically you just have to install
+Manipulate,
+which is on CRAN, so you do
+install.packages.
+And you know, just try.
+You know, here's the simplest Manipulate
+function that you could do.
+And what it boils down to is, here's the,
+here's the trick.
+So here's the one line code for the plot.
+Plot 1 to x.
+And here x is a placeholder, and it's
+saying take the possible
+values where it's going to have a slider
+that goes from 1 to
+100, and you can use your mouse to move
+that slider along.
+And then it'll replace that value of x and
+redo the plot.
+That whole statement is embedded within a
+Manipulate function.
+And then you know, you can create almost
+all of the you
+know, the standard you know, check boxes,
+pickers, drop down menus, standard things.
+So here's, here's an example of some code
+that I used from a different class.
+You do Library, Manipulate.
+You do Library, Manipulate.
+I, I like to create a new plotting
+function so that it's only one function.
+So, like, when I say my hist, I don't
+have a bunch of commands in my Manipulate
+statement.
+So here's my hist for my histogram
+function.
+It only depends on this.
+What I want to do is create a histogram
+function.
+And I want to create, a slider that moves
+a
+horizontal bar, or vertical bar around
+back and forth.
+Right.
+And to show where the mean is and what the
+what the
+value of summation x i minus mu, quantity
+squared is.
+And divide it by n.
+And that would be the means squared air
+for that particular
+value Mu, and I just want to use it to
+illustrate that,
+as I move that slide around, as Mu gets
+closer to X
+bar, then you get closer to the minimum
+means squared air, okay.
+So that's what I'd like to do, let's just
+go ahead and run this code.
+Alright, let's do this.
+Okay, so, here I'm going to try Library,
+Manipulate, good.
+I'm going to create my hist.
+Bam.
+Alright, and Manipulate.
+[SOUND] Errors.
+Oh.
+Data set is not loaded.
+So, I'm going to do library using R.
+Huh, now let's try again.
+There we go.
+All right.
+Here's my histogram, and here's my little
+slider.
+See I can move the slider around, and it
+re does the plot, and
+you can see my mu value, value of mu
+changing and my mean square changing.
+There you go.
+So just that easy to create a slider.
+The documentation goes through it.
+But honestly it's so simple that you
+probably don't
+need to commit a lot of things to memory.
+Just re, go back to the documentation
+every time you need it.
+Anyway, like you can see here.
+As if someone else, you know, is using our
+studio and you want to show them something
+interactive quickly,
+it's way, way more better to do it this
+way,
+than to create a shiny app or something
+more complicated.
+

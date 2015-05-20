@@ -1,0 +1,469 @@
+Hi everyone, this lecture is about writing
+classes and methods in R.
+The basic idea of writing classes and
+methods in R, is that
+you want to represent new kinds of data,
+or new data types.
+That R doesn't kind of you know, by
+default support.
+So for example you can think of a basic
+data type, like a list.
+This is this, this is kind of inherent to
+R.
+There's all kinds of functions and kind of
+processes that you can do
+to lists that gets all kind of built in
+that kind of comes with R.
+But if you can imagine thinking of a new
+data type.
+For example, a new field emerges and they
+come up with their own data.
+This is not something that the original
+designers of R could have foreseen.
+And so, you need to develop a new
+structure to support that data,
+a new set of functions to kind of apply to
+that kind of data type.
+And so, that's what the idea behind
+writing classes and methods in R is.
+So any time something new comes up, the R
+system can adapt.
+And kind of support new types of data and
+new data structures.
+So that's what we're going to talk about
+in this lecture.
+The classes and methods system in R
+is basically a system for doing
+object-oriented programming.
+And years ago when R was first coming out
+it was quite an interesting language.
+Because it was both an interactive system
+that
+supported a kind of formal system for
+object orientation.
+And so, many other languages at the time
+and things
+like, things that had kind of
+well known object orientated programming
+infrastructure.
+Like C++ and Java were generally not
+considered interactive languages.
+Those are the kind of languages where you
+write programs,
+you compile them and then you could run
+them.
+And not the kind of thing where you type
+things in the command
+line and execute things one at a time like
+you do in R.
+So a lot of the R code, a lot of the code
+in R
+for supporting devel, the development of
+classes
+and methods was written by John Chambers
+himself.
+So he was the creator of S and has written
+a lot of code in the R system.
+And so the basic ideas are documented in
+his book Programming with Data.
+And so, the idea behind the class and
+methods system in R is to
+kind of allow people to cross over from
+being a user to being a programmer.
+And you recall from the basic overview of
+the R
+language that we talked about in the R
+programming class.
+John Chambers original idea for the, for
+the S language was that people would
+start off as users and slowly as they
+became more familiar with the language.
+They would cross over and become
+programmers as
+they tried to customize the system for
+themselves.
+So R has a var-, the sa-, the basic same,
+the same basic philosophy.
+Whereas that people could start off, users
+can have executing functions and then
+as their needs grow a-, and as their needs
+kind of outgrow the R system.
+They could become programmers and develop
+new things in R.
+And that's the basis of classes and
+methods.
+So object oriented programming is a little
+bit different
+in R than it is most of the languages.
+So if, if you're familiar with the
+language, like C++ or Java.
+There's document that is helpful, but some
+of the
+ideas in R are a little bit different so.
+It's used.
+And you might want to pay, pay attention
+to some of the details here.
+So in R there are basically two styles of
+classes and methods.
+And this is a function of kind of
+historical development there's kind of
+an older style, and the, the new, there's
+a newer style.
+So sometimes we'll see the older styles
+referred to as S3 classes and methods.
+So that corresponds with version three of
+the S
+language and these classes and methods
+are, are informal.
+They'are a little kludgy and they're
+kind of not very formally rigorous.
+But they get the job done and they work
+quite well.
+And a lot of the basic functions that you
+use
+in R, are kind of built on S3 classes and
+methods.
+So we know that they are really quite
+useful.
+And so, and they're not going away anytime
+soon.
+But the more formal and rigorous system
+for writing classes
+and methods is called, usually referred to
+as the S4 system.
+And the became, because it came with the
+version 4 of the S language.
+It was introduced into R at version 1.4.0,
+which was in December 2001.
+And these are sometimes called new styled
+classes and methods.
+And for new projects, it's generally
+encouraged, for for
+people to kind of use the S4 classes or
+methods.
+If they're going to be developing new
+types of classes and methods.
+So, these two systems for the foreseeable
+future will be living side, by side.
+Just because of the sort of history of R
+and a
+lot of the kind of built in functionality
+that's written in S3.
+But the S3 and S4 systems are separate in
+the sense that
+you don't typically mix then together as
+you are programming new things.
+So the systems are fairly independent of
+each other.
+And so developers are encouraged to use
+the S4 style classes
+in methods that use extensively for
+example in the bio-conductor project.
+But the S3 classes and methods are
+sometimes
+useful because they are very quick and
+dirty.
+They are a little bit easier to program.
+And for short term types of projects you
+may, it may be tempting
+to kind of build up some S3 classes and
+methods in the first go.
+But for the most part we'll focus on S4.
+I'll talk a little bit about the S3 system
+just so you're familiar with it.
+But I'll talk mostly about developing in
+the S4 system.
+So one thing that's important to know is
+that all of the
+implementation of the object orient method
+in the S4 classes and methods.
+Is implemented in the methods package.
+The methods packaged is usually loaded by
+default.
+So if you just start up R from a
+clean installation the methods package
+will usually be loaded.
+But if it's not, you can always load it
+with the library function by calling the
+library methods.
+So the basic idea this, in object oriented
+programming R is
+that you have classes and methods as you
+may have guessed already.
+So a class is basically a description of
+some thing, right?
+And the thing will usually be some new
+thing like a new data type or a new idea.
+And a class can be defined using the set
+class method in the methods package.
+And then you have objects which are
+instances of that classes.
+And objects can be created using the new
+function or
+are often there can be created using other
+types of functions.
+So a method is a function that operates
+on certain class on a certain class of
+objects.
+And so, methods are functions that are
+specific to certain classes.
+And then finally you have a generic
+function,
+which is an R function that dispatches
+methods.
+So generic function is usually it tries to
+encapsulate a generic kind of
+concept, and we'll see a few of these a
+little bit later.
+For example, the plot function is probably
+one of the most used generic functions.
+And the plot functions, plotting is a
+fairly generic concept.
+And what, how you make a plot may depend
+on the kind of data that you're plotting.
+And so there are many different plotting
+methods
+that can be applied to different data
+types.
+And the plots function jobs it to, to look
+at the
+data types and, and dispatch specific
+methods on those different data types.
+So generic functions do not actually do
+anything.
+They don't do any computation, they don't
+do an sort of work.
+Their main job is to dispatch methods, and
+we'll
+talk about what that means more
+specifically in a second.
+And so, a method is the implementation of
+a
+generic function for an object of a
+particular class.
+So the basic concepts are class, object,
+method, and generic function here.
+So, as you're working your way through
+the, learning this system, there are
+a number of help files in the methods
+package that may come in handy.
+so, the primary documentation are in the
+help files.
+So you can look at the classes and methods
+help pages.
+You can also look at help pages for
+?setClass, ?setMethod, and ?setGeneric.
+Some of this gets very technical so you
+may want to skim through it right now.
+But, as you learn the system, it will make
+more sense in the future.
+So every object and R has a class, and the
+class of that object can be determined
+with the class function.
+I just take the number one here.
+You may recall an R the numbers by
+default are kind of real numbers or double
+precision numbers.
+And so, there considered a numeric class,
+and so that's what you see here.
+Illogicals have there own class there true
+and false are logicals.
+If you generate some random numbers, those
+are numeric that again is a numeric
+vector.
+The missing value NA is by default a
+logical, but you
+can have missing kind of of a numeric unit
+missing integer etcetera.
+And then this a character string will have
+in the class of characters.
+So that's all fairly straightforward.
+These are kind of atomic classes.
+But you can go beyond the atomic classes.
+For example, I could fit a linear model.
+And the output from the lm function is an
+lm class.
+So if you think about it, the output from
+fitting a linear
+model is not what you would think of as a
+standard data type.
+Like numeric or integer or character but
+it is a data type.
+There are certain ideas that are kind of
+encapsulated
+in, from the output of a linear model.
+If you are familiar with statistics.
+And so and so it may deserve its own data
+type.
+And so therefore we call it the lm data
+type, or data, or class.
+So that, that's the idea behind classes in
+R.
+So generics and methods are the, these
+types of functions that
+you'll, you'll write to implement
+functionality for certain types of
+classes.
+An S4 and S3 generic functions will
+look different but they are conceptually
+the same.
+They play the same role.
+And so when you can when you program you
+can write meth-, new methods for an
+existing generics.
+So there may be a generic like plot that's
+already out there.
+And then you'll write a new method for a
+new type of data.
+But there may be new generics that you
+create.
+So you may create a new generic function
+for doing a new operation.
+And then, you'll have to write the generic
+and the method for a given data type.
+Here are a few generic functions.
+These are S3 generic functions.
+And so these are probably functions that
+you've seen already.
+The mean is a generic function.
+Print is a generic function.
+And so you see when I print out these
+functions, there's not there's almost no
+code associated with them.
+The only code that comes out of the mean
+function is this use method mean.
+And similarly for the print function, the
+generic
+function, the all you see is use method
+print.
+And so, the basic idea is that, these
+generic functions, there job is
+to find an appropriate method for whatever
+data type is being passed to them.
+So you can see what methods are available,
+for
+the mean generic function, by calling the
+methods function.
+And you can see there's a mean function
+for dates.
+There's a, [UNKNOWN] there's a default
+method.
+And there's one for div time, Posixct and
+Posixlt.
+Now as you add as you kind of load
+packages into
+the R environment, those packages may add
+methods for the means.
+So, as you kind of load packages
+throughout your work in R, this set
+of methods that are available to the mean
+function may change over time.
+And so, this list can grow as you add more
+packages.
+So, here's an example of an S4 generic
+function so this is from the methods
+package.
+It's called show, and it's the equivalent
+of print, but it's the S4 version.
+And you see there's a lot more stuff that
+gets printed out when
+you, when you, when you print out the body
+of the show function.
+The base, the basic idea's the same.
+The, the code for show is the standard
+generic.
+And then show and based, and it just tries
+to
+identify the class of the object that's
+being passed to it.
+And then it will dispatch the appropriate
+method.
+And so, most of the time in R you
+don't call the Show function or the Print
+function.
+Because most, because objects will be auto
+printed at the command line.
+So here you can see what methods
+are associated with the show, generic
+function.
+And you can see that this these are, there
+are number of methods here
+one is for these are all in the methods
+package, that you can see.
+There is one for the in ref class, is
+one for functions, is one for generic
+functions etc,.
+So all these different types of objects
+have a special print method or show
+method.
+So, the basic mechanism by which generic
+functions and
+methods interact with each other is, goes
+as follows.
+So, the first argument for any generic
+function is an object of a particular
+class.
+All right?
+There may be other arguments but the first
+object is important.
+Sorry, the first argument is important.
+And so the way the process works, is that
+the generic function will check the class
+of that object.
+So it will try to identify the class.
+It will do, the generic function will
+essentially do a search
+to see if there's a method that is
+specific for that class.
+If there is a method for that class, then
+it will call
+the method of that object, and then the
+generic functions job is done.
+The method will do the rest of the work.
+If there is no method for that class Then
+the
+generic will search, will see if there's a
+default method.
+So a kind of catch all method that always
+gets applied
+if there's no other kind of more specific
+type of method.
+If there'a default method, then the
+default method
+is called and then it does all the work.
+If there's no default method, then,
+there's an error.
+Because the generic function doesn't know
+what to call, and
+there's no default method so, it can't do
+anything by itself.
+so, a lot of times you may want to look at
+the code for methods.
+But it's important to note that it's
+generally not
+possible to, kind of, print the code of a
+method function.
+Just like you might print the code of any
+other function.
+So some functions that are not generics or
+methods.
+You can just type the name of the function
+in the command line and
+you, you'll see the body of the function
+when you look at the code.
+That's not always the case with S3 or S4
+methods.
+And so, the appropriate way to look at the
+code or method
+is to use either the get S3 method or the
+get method function.
+So get S3 method is for gen,ge,gen S3
+generics, I'm sorry methods.
+And the get method function is for S4.
+And the basic idea, is you pass this
+function.
+The first argument is the name of the
+generic.
+And the second argument is the is the
+class of the object.
+

@@ -1,0 +1,381 @@
+So here's a, simple example of a S3 class
+and method.
+So in the, in the top I'm generating some
+random, normal data.
+And, I'm calculating the mean.
+So here the mean is -0.0307.
+So that's not particularly complicated.
+But here's a lot of stuff going on behind
+the scenes.
+And so, first of all the class of x, which
+is this random normal vector, is numeric.
+So I called the mean, which is a generic
+function on this numeric vector,
+it will search to see if there's a
+specific mean method for numeric objects.
+But there is no as it turns out there is
+no
+method for a numeric object, so we'll call
+the default function.
+For mean, which calculates you know, the
+sum of
+all the elements, and divides by the
+length the vector.
+So you can look at the default method for
+the mean function by using
+the get SE method function, and you can
+see that there are other arguments.
+There's this trim argument, and a .rm, and
+as you go through,
+the function, you can see that it checks a
+number of things.
+It look, if you're doing a trimmed mean,
+it takes care of that first.
+And then, and then ultimately at the very
+bottom there, it calls
+some internal C code that actually
+calculates the meme for efficiency
+purposes.
+[BLANK_AUDIO]
+So that's sort of.
+The meme is a simple example here.
+Is, is.
+And as, a slightly more complicated
+example I've
+generated some, random data in a data
+frame now.
+And I'm S applying The mean function over
+the data frame.
+So one of the important things to known
+about data-frames
+is, that each column could potentially be
+of a different class.
+So you could have the first column be
+numeric like we have here
+and then the second column be integer so
+when we add supply over the
+columns and we call the mean function for
+each column the mean will, will
+protect the class of that column and see
+if there is an appropriate method.
+So for the first column it's numeric It
+will check for
+a numeric method, there isn't one, so it
+will call the default.
+And then the second column is actually
+integer, so it will check for an integer
+method, again there's no integer method,
+so it
+will call the default for that column too.
+So, for, if you have a large data frame
+and every column, is a, is a slightly, is
+a
+different class, the mean function will
+check each column
+to see if there's an appropriate method
+for that class.
+So in some cases it's possible to call
+the, a method directly, so
+you may suffer some S3 methods are visible
+to the user, so you make.
+So, for example the mean.default function,
+is you can
+possible to call that directly without
+calling the generic function.
+But in general the rule is you should
+never call methods directly.
+You should always call the generic
+function and
+let the, the appropriate message be
+dispatched automatically.
+And this, this results in cleaner code,
+And and it's slightly more robust.
+That way the name of the, of the method
+switches so if it
+changes a little bit you won't have to
+worry about the underlining details.
+With the S4 system this isn't a problem
+because you
+cannot call the methods directly for the
+most part at all.
+So one last method, example for an S3
+Class Method so here is the plot function.
+And again I'm generating some random
+normal data so when I
+plot it again it looks for a numeric
+method for plot.
+And since there isn't one it just calls
+the default method for
+plot, and it makes a little scatter plot,
+as you probably would've expect.
+However, this is a slight variation.
+I'm generating some random normal data,
+and then I'm converting, it into a time
+series object, so I use the as.ts function
+to convert it into a time series.
+Now, you'll notice I call plot, I call
+plot the exactly
+the same way as I called it in the
+previous slide.
+But now you can see the plot is totally
+different.
+Instead of a plot with a bunch of circles
+on it it actually creates
+a kind of type series kind of plot where
+all the, the lines are connected.
+And also you'll notice on the x axis,
+there's a label on it for, called time,
+which is different from the x axis that
+was called for the default function in
+plot.
+So here you can see that there is a
+special plotting method for ts objects Or
+time series objects.
+And that plotting method is actually being
+called here and not the default method.
+So, if you want to write new methods for
+new classes, if you often create a new
+class, if you represent a new data type,
+you'll
+probably end up writing methods for
+printing or showing.
+You'll probably, may write a method for
+summary.
+You'll often, you'll write a method for
+plotting because there
+won't be a plot method for a new type of
+data.
+And so there are a couple, there are
+basic, two basic
+ways that you can extend R with the
+classes and method system.
+You can write a new, you can create a new
+class and then write a method for an
+existing generic function
+like Print or Plot Or you can write new
+generic
+functions, and new methods for those
+generics for your new class.
+So, for the rest of this lecture, I'm
+going to talk about S4 classes.
+And, and so, one of these questions, is,
+you
+know, why would you want to create a new
+class?
+Right.
+So what's wrong with the vector in lists,
+and numerics and integers and logicals, et
+cetera.
+While it's possible to survive on just the
+basic data types often it's easier
+and more compact to think at a higher
+level about, more complex data types so,
+for example, you might want to represent
+new types of data like gene expression
+data Spacial temporal data, hierarchical
+datas that
+you might want to represent a sparse
+matrix.
+These are all data types that don't exist
+in r.
+And so, you have to create a new class to
+represent them.
+There are often new concepts that haven't
+been thought of yet.
+So, if you can think of, you know, there's
+a linear model type of
+class, but you think of point process
+model is a different kind of class.
+Mixed effects model is another type.
+Things like that that haven't been thought
+of
+that haven't been kind of implemented yet
+in R.
+And also you might want to hide certain
+implementation details from teh user.
+And so you, you may be able to represent a
+new type of data using lists.
+And vectors.
+But then there maybe a lot of ugly details
+that are exposed
+to the user that you would rather not, the
+user know about.
+And so, And.
+And one thing to, to emphasize, that when
+I say creating a new data,
+type I don't mean, necessarily mean that
+the data type has never been seen before.
+All I mean is that it's not known to R
+and R doesn't have any special handling
+for those data types.
+Types.
+So, creating a new class is done with the
+set class function.
+At the very minimum you can get away with
+just specifying the name of the new class,
+but often
+when you specify a new class there will be
+data elements associated with this class,
+those are called slots.
+You can define methods For this class
+using the set method function.
+So, at a loose level, you can think of a
+class as like a list.
+Every class has a bunch of slots.
+So, these are kind of like elements of a
+list.
+But each slot, it's a little bit more
+specific,
+because each slot is an object of a
+certain class.
+So you can't just put arbitrary data into
+any slot of a class.
+You have to put the specific type of data,
+into each slot of a class.
+So, for example, here I have a simple
+example of creating
+a polygon class, so there's no polygon,
+data object in r.
+So there, you can think of a variety
+of ways in which you might represent
+polygon data.
+So, you can think of a polygon, as a set
+of vertices, and a set of
+or it's just a set of vertices and
+in thinking you can have lines connecting
+the vertices.
+So here I'm creating a polygon class.
+And in the representation, I I create two
+slots.
+One is called x, which contains the x
+coordinates of all of the vertices.
+.
+And then another slot is called y, and
+that contains the y coordinates for all
+the vertices.
+You can see that, so I've specified that
+the x and the y slots are to be numeric.
+So if I create a polygon object the x
+and the y slots have, have to have numeric
+data.
+They can't have characters, they can't
+have integers, etcetera.
+So now I've created a polygon class the
+next thing I probably want to
+do is create a method for, for example,
+for plotting this, a polygon.
+And so when you call the set method
+function you have to specify generic
+functions such as plot, and then you have
+to specify something called a signature.
+And so the signature is basically the, the
+set of
+classes on which the generic on which the
+method will operate.
+So in this, case I'm going to want to
+create a method for the plot generic
+function.
+The signature is basically going to be
+this Polygon Class that I just created.
+So here's my method for the plot generic
+called the set method function.
+The first argument is the name of the
+generic, and the second argument is the
+signature, in this case, it's polygon and
+so you can see in this function it
+takes an X and a Y argument and then the
+dot, dot, dot is for
+kind of other arguments And so you can see
+that within so the x argument.
+Is just the polygon object.
+The y argument is missing there's no y
+argument here.
+And so I can see that within the function
+I actually called plot again.
+Right so here I'm creating a method for
+the polygon object.
+And within the method I actually call plot
+again.
+But that's going to be the default method
+for plot.
+Because I'm just plotting some numeric
+vectors in that case.
+So what this function does is it plots the
+vertices.
+And then it sits, to set up the plotting
+window.
+And it kind of wraps the vertices around
+themselves so that they kind of connect.
+And then it uses the lines functions to to
+connect, connect, the dots.
+And then after that, it makes my little
+polygon here.
+And so that's the plotting method for
+polygon objects.
+I know, notice that I, the plot, since,
+since plot already existed
+as a generic function, I didn't have to
+create a new generic function.
+And notice that when I want to access the
+slots
+of an object in an s4 class, I use the at
+symbol to so it's kind of like a list but
+instead of using the dollar sign I use the
+at symbol.
+So after I call the set method function,
+if I call
+show methods on plot you can see that the
+the polygon method
+has been added to the list here and then
+in addition to
+the polygon method there is any method
+which is the default method.
+So here I am creating.
+I'm using the new function to create a
+polygon, an object from the polygon class.
+I create the x vertices and I create the y
+vertices and now
+when I call plot on it you can see that it
+doesn't just
+call the default plot method, it actually
+calls my method that I just
+created and you can see it draws this
+little triangle by connecting the dots.
+So, that's a very simple example on how to
+develop, create a new class and develop
+some new methods.
+It's a in general developing classes and
+methods is
+a very powerful way to extend the
+functionality of R.
+And so just, so just to summarize, their
+classes define new data
+type so they, they, they allow R to
+represent new types of data.
+Methods extend generic functions to, to
+specify the behavior
+of generic functions on these new classes
+that he developed.
+And as you develop these new data types
+and these
+new concepts and make a familiar to R, the
+classes and
+methods give you a way to develop kind of
+an easier
+interface for users to kind of interact
+with new types of data.
+And so it's really a handy way to
+kind of create new ,to allow users to
+interact with
+new kinds of data without, without having
+to
+get bogged down, a lot of the
+implementation details.
+And one of the most popular ways to kind
+of make
+new classes and methods available to users
+is through R packages.
+And so, most commonly you'll see these
+kinds of things embedded within an R
+package.
+

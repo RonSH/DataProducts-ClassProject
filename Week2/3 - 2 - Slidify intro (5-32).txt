@@ -1,0 +1,157 @@
+Hi, my name is Brian Caffo, I'm a
+professor in
+the Department of Biostatistics at the
+Johns Hopkins Bloomberg School of
+Public Health, and this is the lecture on
+Slidify in
+the Coursera data science specialization,
+part of the data products class.
+This class and all the other classes in
+the specialization
+are co-taught with my co-instructors Jeff
+Leek and Roger Peng.
+Okay, so what is Slidify?
+Slidify is a way to create data centered
+presentations.
+It was created by Ramnath, who's a friend
+of ours and we like quite a bit.
+And it streamlines this process of
+creating and present,
+creating presentations so that if you
+update data or
+update functions that, that all you have
+to do
+is recompile the presentation, and it gets
+updated as well.
+So what Slidify really is, is it's an
+amalgamation of knitr,
+Markdown a bunch of JavaScript libraries
+and HTML5 slide decks.
+So you might have seen if you're very
+familiar with some modern HTML
+presentations there's kind of a thriving
+community
+developing very nifty HTML HTML5 slide
+decks.
+And Slidify is leveraging that and then
+making it
+so that you don't have sort of know all
+the ends and outs of, of HTML5 and
+JavaScript,
+that you can just do it directly in R.
+Slidify is very customizable, and it's
+easy
+to use because you basically write in
+Markdown,
+which if you haven't used Markdown before,
+it's
+a tremendously simple watered down version
+of HTML.
+Or, not version of HTML, watered down,
+sort of HTML-type language.
+So Slidify allows embedded code chunks
+that render quite nicely.
+It also allows mathematical formulas, and
+what
+that really means is that the JavaScript
+library MathJax correctly renders the
+mathematical formulas,
+and you type them out in LaTeX.
+So if you're an academic like me, and
+you're used to LaTeX that's really great.
+So anyway, Slidify presentations, when
+you're done, are just html files.
+So you can view them with any web browser,
+and you can share them very easily.
+And it's a, it's a nice way to, to, to
+give a presentation.
+I find it's actually quite nice when I go
+give presentations to do them in
+Slidify because usually there's already at
+the lectern and I just go to a website.
+I usually host the Slidify presentation
+off, directly off of GitHub.
+And, so I usually don't even have to bring
+a, a, a drive to transfer my presentation
+on.
+Okay.
+So getting Slidify.
+So, it's super easy.
+Fire up R, or RStudio.
+I like to do it in RStudio.
+Make sure you have devtools installed,
+which is on Cran, so if you, if you, You
+can do installed out packages to get dev
+tools, oh in fact here's the command right
+there.
+And you want to make sure it's loaded, so
+library dev tools.
+Then you need to install Slidify.
+Ramnath is really developing very
+actively, so
+he doesn't seem to put it on Cran.
+It's still on GitHub.
+So you can do install.github, which is a
+function from Devtools and
+Slidify and that's the user name that it's
+looking for in GitHub.
+And then Slidify Libraries is just exactly
+as it sounds:
+a bunch of library files that Slidify
+needs to run.
+And then you load Libraries Slidify, so
+now let's start creating some slides.
+so, you, you, can, you should start by,
+setting the working directory
+into the project where you want the, the
+project to be contained.
+I, you know, I actually kind of like doing
+this in our studio now.
+Instead of doing setwd, I just do session
+and then set
+setting to working directory to the file
+that I'm working on.
+So create your project name and, and, and,
+you can, you can
+type all the commands in to, for a basic
+Slidify document.
+But I find it easier, is to just use the
+so-called author command.
+If you just do author("first_deck"),
+it'll, kind of populate a somewhat
+empty Slidify document for you, for you to
+start filling in.
+It'll put in a little bit just to remind
+you what the commands are.
+So what does it do, what does it cause to
+happen?
+Well, a directory name of your project is
+created inside of your current directory.
+Inside this directory is an assets
+directory
+and a file a file called index.rmd.
+That's the Markdown file you'll create to
+edit your Slidify documents.
+And then the assets directory is populated
+with a bunch of empty folders for
+CSS that's the style sheets image files,
+JavaScripts, and layouts, JavaScript code
+and layouts.
+And so, what you're going to do is, is
+populate this
+R Markdown file and then run Slidify to
+run it.
+So
+so any, any of the customization you
+should put in those directories.
+And if you're not really terribly familiar
+with
+web development then I wouldn't bother
+with those.
+You can just sort of dig around for style
+and maybe use other people's open source
+style files
+But if you really know, then that's where
+you would dig around.
+Okay.
+

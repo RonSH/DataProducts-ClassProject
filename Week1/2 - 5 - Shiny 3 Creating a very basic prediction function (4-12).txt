@@ -1,0 +1,120 @@
+Okay, so now that we have our skills,
+let's build our predict function, okay.
+So, I'm going to go through all of the
+little bits of
+this code and then I'll pan out and run it
+real quick.
+Okay, so I, I'm going to do a page with
+sidebar because
+that's what I always do, you know, in
+ShinyUI, Shiny user interface.
+My, I'm just, tell the people that this is
+the
+diabetes prediction algorithm, and my
+sidebar panel, it's going to take
+as numeric input, it's going to take
+something, ID label glucose
+and I'm then going to tell them what to
+put it in.
+And,of course, I'm going to give them the
+units because I would
+be a monster if I didn't give them the
+units, right?
+That's really bad form.
+And then min, max, step size 5, put a
+default level as 90.
+Oh, this is cool.
+You can put a submit button in with submit
+and you, you can see on the
+Shiny tutorial if you want it to not even
+implement the default values.
+And to wait until the person enters in for
+the first time before they, for,
+for, for Shiny to wait for the first
+submit to actually run, but right now
+it will, it will, it will, I think it will
+go the first time, and
+then when you hit Submit it'll update it
+but it won't update it in between.
+So, [SOUND] so, there's, there's a little
+bit of complexity with doing that.
+But anyway, you can add a submit button.
+I think it's called a go button if you
+want to actually predicate action
+even in the first instance with with
+depress, depressing the go button.
+Which is a bit much for, for this class.
+I think we just want you know, a submit
+button for right now.
+Just you know, is this probably good
+enough.
+You'll see the submit button when I show
+you the results, here
+it's going to give you the results of
+prediction, here's what you entered.
+It's giving you the input value.
+And which, which resulted in a prediction
+of, and it gives you the prediction value.
+So the input value is the, the output name
+that server dot that the
+myserver.r function labeled and so this is
+going to print it out and my
+prediction is that label name that
+myserver.r function label prediction.
+Whereas glucose is my, what my UI, side
+bar panel, numeric input labeled as
+glucose, okay?
+So, let's go to the next thing, which is
+my
+server, so you can put your function up
+here at
+the beginning or you can do an include
+statement or
+a source statement, in, in case it's a
+long thing.
+So, here's my function.
+And here it's function input output.
+Here's my input, my output value.
+Since I want to print out the input value
+I'm grabbing the I'm labeling it input
+value.
+And I'm grabbing the input glucose value.
+And I'm telling it that what I want to do
+with this output is just print, print it.
+And my prediction.
+I want to print it, and in running my
+function, diabetesRisk of for the input
+value of glucose.
+Okay?
+So, hopefully, this should be pretty
+simple to follow.
+So, here's the result.
+You click, you get to click on glucose,
+whatever you want, you hit
+the Submit, it says, you entered, which
+resulted in a prediction of blank.
+So let's actually run it.
+So, here it is in a tab for Chrome for me.
+Notice it runs the first one.
+If you, if you want this submit button to
+not run the first one,
+then you have to program in, I think, what
+they call a Go button.
+Which it's not too hard, but but let's I
+want to just focus on the, the core.
+You know, getting kind of core
+functionality out.
+So, let's say I wanted to predict at 115.
+Now, it won't go until I submit.
+So you can see it, you put in it.
+So you want a Submit button if the
+calculations kind of take kind of long.
+[SOUND] If they go really fast, then why
+bother?
+Just have it, update it real time.
+I do think it's generally good form to,
+to reshow the person the value that they
+entered.
+But there you go.
+That's what it gets for you.
+

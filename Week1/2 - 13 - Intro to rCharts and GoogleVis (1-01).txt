@@ -1,0 +1,24 @@
+My friend Jeff has a problem that impacts
+nine out of ten statisticians.
+He makes static boring non-interactive
+graphs.
+And interactivity in graphs is more than
+just
+about eye candy, it's about giving the
+user control.
+In a way that makes it easy for them to do
+some of the manipulations
+that the programmer can do without having
+all the overhead of actually writing the
+program.
+And new tools in R like rCharts and
+googleVis make creating interactive
+highly engaging plots much easier, so that
+users don't have to learn complex
+tools like D3, now Jeff's presentations
+really jump off the screen.
+And with his new dance moves,
+his presentations are really something to
+behold.
+[BLANK_AUDIO]
+

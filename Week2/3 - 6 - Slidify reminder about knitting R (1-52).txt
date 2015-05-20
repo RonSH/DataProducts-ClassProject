@@ -1,0 +1,56 @@
+Okay, so, having taken the reproducible
+research class, everyone
+in this class knows how to use Knitter,
+but
+let's just, you know, briefly go through,
+[SOUND] using
+Spotify, [SOUND] embedding a simple R
+command into Spotify.
+So, let me just do, I want to do [SOUND] 1
+: 10, I want to do [SOUND] sum (1 : 10).
+And, a friend told me that, that has to be
+[SOUND] 10 * (11) / 2.
+So I'm going to check that out.
+[SOUND] Okay, and so, oh, by the way, you
+know, you can just do knitHTML.
+Knit the document, [SOUND] right?
+And, that's also something, and it brings
+up the preview, right?
+It brings up, [SOUND] the preview.
+So there's our thing.
+There's this.
+Okay, so it says, sum 1 : 10, 55, 10 times
+11 divided by 2, 55.
+Okay.
+All right, and it has the same options
+[SOUND] as.
+Ordinary knitr.
+So, you know, and you get auto complete
+in, in
+R studio, [SOUND] so you can see 'em for
+example.
+You could, you could do echo equals
+[SOUND] FALSE.
+Save it, [SOUND] knit the HTML, and now
+look it only puts out the output.
+Okay, right, or you could do.
+Echo equals true, [SOUND] but, results
+[SOUND] equals hide.
+Right?
+And then do it and then now it just, puts
+the commands without the results.
+Okay.
+And if you want just some code [SOUND]
+that it doesn't evaluate, you can just
+say,
+[SOUND] you know, if you just want some
+r code that, [SOUND] that it doesn't
+evaluate.
+You add some, something, that looks like
+code right here,
+you know, you can always just do, [SOUND]
+something like that.
+[SOUND].
+And then it won't, it won't evaluate it
+[SOUND].
+

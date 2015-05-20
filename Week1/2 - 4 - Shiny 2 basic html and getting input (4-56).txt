@@ -1,0 +1,149 @@
+There's Main Panel.
+Okay.
+Here's example for R functions with
+markup.
+R functions will insert the HTML markup.
+So, the header panel is going to say
+illustrating markup, so remember that.
+And then, you gotta remember that the
+commas are what kill you with Shiny.
+So, remember that you gotta have commas
+between things.
+And then you know, say, for example, no
+comma right there.
+So, h1, it's, this, I'm going to say h1 is
+that
+the sidebar panel, and then there's gotta
+be a comma there.
+h1 text, comma there, h2 text, comma
+there, h3 text, comma there, and so on.
+And so, all of these things will render in
+the sidebar panel.
+The main panel, I've got three things,
+some main panel text, some
+code formatted is the code and p, some
+ordinary text right there.
+Okay, so this is just a simple UI function
+that shows the rendering.
+So here's the illustrating markup
+statement.
+It rendered as H1.
+And then in the sidebar it rendered the
+sidebar panel, labeled right there
+there's my H1 text, my H2 text, my H3
+text, my H4 text, my main panel text.
+Here's what it renders code like by
+default.
+And here's some ordinary text.
+Okay and again this is, this is all
+squashed, right,
+the, the main, you know, when you do this
+you'll
+see that the, you'll see it looks, it
+looks different,
+there's, there's a lot more, white space
+over in that direction.
+Okay.
+I wanted to show, an example of inputs.
+So, remember, the header is going to say,
+illustrating inputs.
+The sidebar panel, I'm going to put in a
+numeric input.
+And you'll see what I mean by that.
+So, a little box where you can enter in a
+numeric input.
+Here's the label so it's, it is exactly
+the HTML label.
+And then here's the printed label.
+Numeric input labeled ID1.
+Here's the, the default value, the minimum
+and the maximum and a step value.
+And you'll see what the step value does.
+And then here's a check box.
+It's labeled ID2.
+I've put it in, I, I label it as called
+check box.
+And here's the, the different values that
+it can give.
+Here it is date input.
+And then the main panel I'm just going to
+leave blank in this example.
+And here's, here's an examp, here, here's
+the example.
+When you run it, you'll see.
+So, when you push this button, it's going
+to increase
+or decrease the numeric input as per the
+step size.
+And then here's the check box.
+Right?
+Check, check, check it.
+And, and, and date when you click that
+it'll
+actually bring down, a calendar that you
+can take.
+Grab the date from and then, and then
+here,
+I wanted to show how you can grab the
+output.
+So, here, and, and display the output.
+So here in h, h3 text and it'll say
+illustrating output.
+H4 will say you entered.
+And then I'm going to say output.
+ID 1 output ID 2 and, and output date,
+okay?
+And so that's how I'm going to render the
+output, but notice I gotta
+grab these oid 1, oid 2 and odate
+variables, where do those come from?
+Well, those come from your server
+function.
+And my server function just says, it takes
+in my input, which is my input ID1.
+So this is where it grabs the HTML labels,
+right?
+ID1, ID2 and date.
+And then here, render print is just saying
+I,
+that output is, is going to be formatted
+as printed text.
+So output oid1 is going to be printed to,
+just reprinting the input ID, and so on.
+Okay?
+And, here we go.
+So here, you know, here you see.
+So here you can see it.
+It starts at default value zero.
+I could, I could press up and down on that
+zero to change the outputs over here.
+You know, whatever you check over here.
+So I check the two values and you'd see
+they
+come out over here as you entered one and
+two.
+The zero is you entered zero.
+And then I clicked, clicked the date which
+I think was actually
+the date I was doing this and it says you
+entered that date.
+Okay?
+Okay, and here it is actually live.
+So in my art studio I typed run app in the
+directory
+that contained this code, this code is in
+the get hub repository.
+And you can see as I enter in numeric
+input
+as I increase it to five, it's changed to
+five
+over there, I check value one, value two,
+value three,
+value two, value one, I can grab the new
+date.
+Okay.
+Okay, so that's just what it, that's
+showing how you can
+get from your inputs to the server, then
+back to the.
+

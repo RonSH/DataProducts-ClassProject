@@ -1,0 +1,252 @@
+Hi my name is Bryan Kaffow and welcome to
+the Coursera Data Products class first
+lecture on Plotly.
+So Plotly is a platform for creating
+interactive graphics and dealing analysis.
+However, we're going to focus on Plotly as
+it interacts with R.
+So in this way it will be not unlike
+what we're getting out of R charts in
+googleVis.
+The difference is Plotly will interact
+with a specific web platform.
+So the first step on Plotly is to create
+an account
+or link Plotly with one of your existing
+accounts like GitHub.
+I created a new account.
+After that, I think, probably, it's best
+to click on the learn button here.
+And then it goes through a bunch of
+documentation on Plotly.
+I'm interested in R, so I'm going to go
+down here.
+And I'm particularly interested because I
+being kind of into
+ggplot2 lately, clicking how to interact
+between Plotly and ggplot.
+So, click on the Getting Started button
+here.
+It takes you to a webpage that I found
+particularly useful.
+For getting started with the Plotly R API.
+So first you need to have installed
+devtools, which, I think,
+at this point in the class, you should
+have already have done.
+Then you want to do library devtools.
+And then you want to install the Plotly
+package from GitHub.
+And that's in the location ropensci/plotly
+given here.
+Then you want to initialize plotly with
+library plotly, and
+then you'll unload some other packages
+like Rcurl and RJSONID etcetera.
+Next the Plotly website gives you a set
+credential command.
+You should run that command in your R
+console.
+And you should only have to do that once.
+If you can't find it and it will give you
+the
+correct command with the correct key, if
+you're logged into Plotly.
+If you need to set a new key for whatever
+the
+reason and if for example if you
+accidentally show your key to
+thousands of people during a data products
+class, then you can click
+on your name in Plotly to settings and
+then reset the key.
+So here you actually get a brief glimpse
+into my actual day job.
+So what I do most of the time during the
+day is think about so called brain kind of
+activities.
+So here's the results of these sorts of
+large dimensional decompositions that.
+That we like to think about and I'm using
+R studio's
+manipulate and this is a nice motivation
+for R studio's manipulate function.
+Here it sort of flips through latent
+factors of this decomposition
+and this flips through axial slices of the
+brain.
+And this changes the statistical threshold
+that I'm using to control the overlay.
+So at any rate, that's what I actually do
+during the day.
+I would also add here, let me show you an
+example that motivates why you might need
+something like Plotly.
+Here's another use of the manipulative
+function.
+So those are the images, there are some
+associated loadings that occur.
+And here, what you often want to do is
+flip though the loadings
+in this case, and if you see an instance
+like this, where there is
+a lot of nice variability in the loadings,
+but there's one subject that's sticking
+way out, it'd be nice if I could just
+hover over that one subject.
+Like here and figure out what subject that
+is because then when
+I go back to the original brain imaging
+data there's usually a mistake.
+Like this one for sure there's probably
+some
+mistake for this person's brain image at
+some point.
+And so I'd like some interactivity where
+if I hover my mouse over this, so I
+don't have to code to figure out what that
+one is because I'm going back and forth.
+And things like Plotly and RCharts and
+googleVis are particularly good at that.
+So let's go through an example.
+So on the GitHub repository I have this
+data set, courseraData.rda, which you can
+load up.
+Up here I've already loaded it up.
+And that contains enrollment numbers for
+our Coursera
+classes before we started the data science
+specialization.
+And I would do the library plotly, and
+then
+library ggplot2, because I want to create
+a ggplot.
+So, I'm going to create my ggplot where my
+y
+is enrollment, my x is which class it is,
+and my fill is which offering it.
+Was first offering, second offering, third
+offering.
+And then I give it my data frame, my data.
+And then that creates the sort of blank
+ggplot canvas, and then I'm going to add
+a bar graph where the statistic is the
+identity statistic and there, I'm going to
+plot it.
+So there it is nice, and in the RStudio
+plotting window.
+Though of course notice when I hover the
+bars, nothing happens.
+Okay, so let's now try and import it into
+Plotly.
+What I do is I create a variable that is
+the output of the Plotly command
+and then if I were to run this command
+here, take the variable that I output.
+Do ggplotly.
+Which is this interface between ggplot and
+Plotly.
+And then I pass it my ggplot which I
+confusingly named g.
+And I run that, it will take me to Plotly.
+It'll open up a new browser window with
+that plot in it.
+And I'm going to assign it to a variable.
+And the reason I, why I'm going to assign
+it to a variable because I might
+want to refer back to this, is you can
+grab the Plotly URL from that variable.
+So out is the, what I'm assigning this
+output to, dollar sign response dollar
+sign URL.
+Will give you that url associated with the
+Plotly plot.
+So let's do it.
+Okay.
+There we go.
+There it brought up my new browser window.
+And then let me just go back here and just
+show you how I can get the, the URL.
+Okay.
+But now let me also look at my Plotly
+plot.
+And, notice it's a bar plot.
+Okay, but notice it has some of the
+interactivity
+that was actually not present, in my
+original ggplot.
+So let's, look at this plot for a minute.
+So this class right here is a case-based
+introduction to Biostatistics taught by
+the great Biostatistician Scott Zeger
+who's in
+our department here, and that has 20,000.
+If it ever runs again you get it, you
+should take it because you get
+a chance to really take a class from one
+of the best Biostatisticians out there.
+Roger's computing for data analysis class
+which now is
+sort of superseded by the R programming
+class in specialization.
+Had runs of 50,000, 44,000, 80,000 and
+65,000 and if you stack them up like
+this you see that Roger's total enrollment
+is about 250,000 from his collection of
+courses.
+Jeff Lee is sort of the Justin Timberlake
+of our little boy band here and he's had a
+single class with over 100,000 in it and
+its
+first data analysis class, and 91,000 in
+the second running.
+I'm sort of Mr. Consistent here
+in Mathematics Biostatistics Boot Camp 1,
+with
+16,000, 22,000, 18,000, and 18,000 fairly,
+very
+consistent but pedestrian performance by
+corsair standards.
+And in Boot Camp 2, which is the sequel of
+this class, gets much lower enrollment
+10,000 and close to 7,000.
+So it's kind of interesting dataset.
+But, let's also play around.
+Let's see, Save and Edit.
+So, if I click on Save and Edit, they'll
+take me to
+a new window where I can edit my Plotly
+plot.
+From the Plotly website so let's just do
+one quick example.
+I think you can load up the website and
+play around with it.
+I hope I've given you enough to get
+started here.
+But let's take for example a theme.
+So, for example if I want to change a
+color theme of my existing plot.
+This pineapple looking clock well, it does
+feel a
+great deal more tropical to me which is
+good.
+And then I can switch between say this
+stacked bar chart and a staggered bar
+chart.
+So I don't actually have to go back to the
+R coding.
+Right, so not, not terribly unlike our
+example in
+R charts when we did exactly the same
+thing.
+So I have my graph set how I like.
+I think I like the original stacked bar
+chart better,
+and Plotly really has in mind things like
+sharing your graph.
+It's kind of a social graphing platform
+more than anything else.
+And so if you click on share, you
+can click share on Twitter or Facebook
+right here.
+

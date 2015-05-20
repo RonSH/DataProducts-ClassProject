@@ -1,0 +1,152 @@
+Hi, my name is Brian Caffo and, I'm in the
+Department of
+Biostatistics at the Bloomberg School of
+Public Health at Johns Hopkins University.
+And this is the Coursera data science
+specialization class on RStudio Presenter.
+This class is co-taught with my
+instructors, Jeff Leek and Roger Peng.
+Okay.
+So what is RStudio Presenter?
+Let me get a nice high lighter here.
+So RStudio created this authoring tool so
+that
+you can create reproducible presentations
+within their environment.
+And basically if you're familiar with
+slidify, then,
+you should have zero effort for picking
+this up.
+And if you're not familiar with slidify, I
+think
+this is probably a little bit easier to
+learn.
+So, just like Slidify code is author,
+authored in a
+generalized mark down format that allows
+for R code chunks.
+And the ultimate output is an html5
+presentation that you view in a web
+browser.
+The file index for the presenter file is,
+has
+a .Rpres extension instead of .md .r mark
+down Extension
+like and slidify and then there's a lot of
+GUI tools, and we will go through them in,
+the
+environment that you can use that makes,
+you know,
+this quite nice, if you like to use GUI
+tools,
+and maybe if you like to do a lot of
+command lines stuff maybe slidify would be
+better for you.
+Okay.
+So the guide that you probably want to
+follow is, on this link right here.
+Go to that guide, it's, very good.
+Most of this content is just taken from
+that link and I, created this
+presentation in, RStudio Presenter so you
+could get a sense what it looks like.
+The Quick start is just you do File, and
+then New File then R presentation and if
+you're you know, keystroke junkie, then
+that's just Alt-f, then f, then p.
+And then you just start using
+Slidify/knitr style Cmd for authoring
+content.
+They walk you through they, they have all
+these things that will help walk you
+through it.
+You know, so, single quotes for inline
+code.
+Triple quotes for block code.
+And, same options as, you know, for code
+evaluation catch.
+Okay.
+So here's my, presentation that I was
+working on, for today.
+And, you can see here in the preview pane
+here.
+Here's the The preview what I could, do,
+is if I wanted to,
+I could pop this whole thing out into a
+oh, where am I at?
+There we go, into a bigger
+bigger screen.
+If you, click on this button over here
+more, it'll, show that you can
+view it in the browser, you can save it as
+a web page, you can publish it to RPubs.
+This clears the cache, from the R Code
+that you ran.
+and, you know, this navigates through.
+Then, if you're at a slide that you want,
+and you click on Edit.
+It brings you to that, location in the
+slide over there.
+okay, so let's just show you how to, how
+to get started.
+So you would just go to File > New File.
+New file > R Presentation.
+And then it, it creates one.
+And I'll just create one called [SOUND]
+test.
+Okay.
+There it is.
+Okay.
+And so now, if I say this is my, my test
+presentation.
+[SOUND] Brian Caffo [SOUND] and the date
+is, I
+don't know let's just put the R date in
+there.
+So we'll just do date [SOUND] like that.
+Okay.
+And then when I save it, watch what
+happens.
+It compiles it, my test presentation,
+Brian Caffo, puts the date in there.
+Okay.
+Then you can see how the, authoring looks
+an awful lot like just ordinary old.
+Mark down or Slidify like we've done
+before.
+You can see right here, where you have
+some separated out R code.
+So look, it'll look like that where it
+reproduces the code and then puts it in
+there.
+You know, and of course it takes the same
+subset of commands as Knitter and Slidify.
+So if I did echo equals false.
+Right, and then save it, it reruns it, and
+there now, it's no longer, echoing the,
+Cmd, okay?
+And then, it shows you how you can, add
+in plots, and that sort of, that's sort of
+thing.
+So during this presentation what I'm just
+going to
+go through, is all the options you can go.
+These, these equal signs separate the
+slides.
+You actually only need three of them,
+right?
+So if I do that, it, gives me that.
+But I take away down to two, it messes up,
+right?
+Okay, so, you need three of them.
+And it gives the correct, correct slide
+transition.
+Okay, but, another, and, so it's a, and
+then
+if you want help by the way, Markdown
+Markdown
+Quick Reference, you can click on that
+right there
+and just see, your Markdown Quick
+Reference right there.
+

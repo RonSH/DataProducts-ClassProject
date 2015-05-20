@@ -1,0 +1,525 @@
+[BLANK_AUDIO]
+So, what makes up an R package?
+So, there are several of essential
+elements and
+then there are a number of, optional
+elements.
+So, the first thing you do when you create
+an R
+package is you need to create a directory
+on your file system.
+And so this is done in a variety of
+different ways depending
+on what platform you're on, but it always
+starts out with, a directory.
+And it's, and it's typical to name the
+directory to, to be
+the same as the name of the package, so if
+you're name.
+If your package is you know, my package,
+then you would name the directory my
+package.
+It's not, and so, it's, so that's
+a convention pretty much amongst all our
+packages.
+The next thing that you need to have in a
+package is what's
+called a description file, and this has
+some meta data about the package.
+Of course you need some R code in an R
+sub-directory.
+You need to have some documentation for
+the R code.
+This is typically in the man
+sub-directory.
+A namespace file is optional, but it's
+very common, and
+I, and I encourage you to have a namespace
+file.
+And then if you want to know what all the,
+the full
+requirements are, you can look in the
+Writing R Extensions document.
+That's available on the R website.
+So what does it mean, the first thing is
+the description file.
+After you've created the R directory you
+can put in a description file in
+there and these are the elements that you
+need to have in the description file.
+First of course is the name of the
+package.
+The title is a slightly longer kind of
+description of the package beyond just the
+name.
+And then the description field is an even
+longer description.
+This could be a
+a sentence, or maybe even a sentence or
+two, and then the version number, which is
+going to usually in the format of a major
+number dot minor number dash and then
+patch level.
+It doesn't have to be in that format, but
+that's common.
+The name of the author, so this can be the
+name of the person that wrote the original
+code it may not be you if someone else
+wrote the original code, but it could be
+you.
+The maintainer is very important because
+this is the, this will be the name of
+the person who, who who maintains the
+package and the year of their email
+address.
+So, if there are any problems with the
+package, there's an email attached
+to the maintainer and that person
+has taken responsibility for addressing
+any problems.
+And then finally there just as important
+is the license for the source code.
+And so the license describes you know,
+what are the terms that
+the source code are being, the source code
+is being released under and
+some common licenses for source code for R
+code are things like
+the GNU public general license or the or
+BSD license or MIT license.
+You typically a kind of standard open
+source license is used.
+[BLANK_AUDIO]
+Um,other fields that you can put into the
+description
+file that are optional but are commonly
+use are Depends.
+And this is a list of R packages that your
+package will depend on.
+So often if you are writing R code you
+will use code from
+other packages and that needs to be listed
+here in the depends field.
+Suggests is another list of our packages
+that you may want
+the users to have installed but aren't
+strictly essential to writing the R-code.
+Then the date, it just indi, indicates the
+release date of the package.
+The ur, if your package has a home page.
+You can list the url for the home page.
+I often list the you know, to the
+GitHub repository, for this for each of
+the packages.
+And then you can add other fields to
+the description file just for your own
+benefit.
+But these will generally be ignored by R.
+So here's an example of description file
+from the GPC lib package.
+So here you can see the, the name of the
+package is GPC lib.
+The title is the, General Polygon Clipping
+Library for R.
+The description is the general polygon
+clipping routines for
+R based on this C library by Alan Murta.
+The version, we're calling that 1.5-5.
+So I am the author but there have
+been a number of con, contributions from
+other people.
+I'm also the maintainer.
+And so, there's my email address there for
+the maintainer.
+the, this package has a special license.
+And so I, I, I, the details of which are
+found in the license files.
+That's why I kept this file license there.
+The it depends on r being at least version
+2.14, so that's a fairly old version.
+Most people will have a version that's
+greater than that.
+And it also depends on the methods
+package, import functions from the
+graphics package.
+I'll talk more about that when I talk
+about the name space file.
+And then the release date for this package
+was April 1st, 2013 and then there's a
+URL for the web, website on the kind
+of underlying C library and the GitHub
+repository.
+Once you've written up your description
+file, the next thing you
+want to do, typically is copy your R code
+into the R sub-directory.
+Now there can be any number of files in
+this directory.
+You don't have to have all your R code in
+a single file.
+furthermore, you don't, but you don't have
+to
+have, like, you know, one file per every
+function.
+So you can organize it however you want.
+Doesn't matter what the number of files
+is.
+But you typically want to separate, have a
+separate files, for kind of logical groups
+of functions, so all the functions that,
+you know, read data go in one file.
+Now all of the functions that maybe fit
+model go into a different file.
+So all the R, your R codes should be
+included here, and
+anything that you want to make available
+through the package it should not.
+You should not include an R code in any
+other part of the package.
+The name space file is useful because
+it indicates essentially the API for your
+function.
+It also lists all the dependencies so, you
+know, code that your package uses from
+other packages.
+So there's two kinds of things.
+The first is the export, so you want to
+indicate which functions in
+your package are exported, so these are
+available to the user; these
+are the public functions, and so
+non-exported functions, the functions that
+are
+not listed in this file, cannot be called
+directly by the user.
+There are, unless they kind of use some
+special functions to access that code.
+So these are not available in general to
+the public.
+And this allows you to hide the
+implementation details from users.
+And makes for a generally cleaner package
+interface.
+The other thing you need to indicate
+beyond, besides exports,
+is imports, so you can import functions
+from other packages.
+And this, so this allows your package to
+make use of
+other packages without making other
+packages, you know visible to the user.
+Typically if you load a package and it
+depends on a lot of other packages
+you don't necessarily want all those other
+packages to be loaded into the search list
+for example for the user to see and so
+this allows you to use the
+functionality of other packages without
+having to
+load every other package onto the search
+list.
+And so importing a function, loads the
+package name
+space, but it doesn't attach it to the
+search list.
+So a couple of key directives for the name
+space
+file or the export, for, where you can
+export a function.
+Import is for importing a package and then
+import from is
+for importing a function for a specific
+function from a package.
+So this allows you to kind of very
+specifically
+describe your dependencies, and the public
+API for your package.
+If you're using s4 classes and methods
+some important directives
+are the export classes directive and the
+export methods one.
+Although these things look like R
+functions it's
+important to realize that they aren't
+exactly R functions.
+So here's a sample name space file from
+the mvtspolt package.
+This package only has one function.
+It's export it's called mvtsplot, it's a
+plotting function for multi variate time
+series.
+So that is the only function that the user
+can call when this function is loaded.
+It imports the access function from the
+graphics package.
+And it also imports this, the, all the
+functionality of the splines package.
+So that's basically it.
+It's a very simple name space file.
+Here's another, slightly more complicated
+name space file
+from the gpclib package that we just saw.
+There are two functions exported here, the
+read polyfile and the write polyfile.
+We import the plot function from the
+graphics package and then
+there are two s4 classes that are exported
+to the user.
+These are GPC.poly and GPC.poly.nohole.
+And then there are a number of methods
+that are exported
+to the user including the show method are
+and get.bbox et cetera.
+So these are methods that apply to these
+new classes that are defined, the gpc.poly
+class.
+And these are all the methods that are
+available to the user for this class.
+Once you've got the description file, the
+R code, and the
+name space file and the next thing to
+d-deal with is documentation.
+So documentation is very important because
+it allows the user to
+kind of understand how your function is
+suppose to be used.
+And documentation files typically have a
+capital R and then D extension.
+And they're placed in the mend
+sub-directory of the package directory
+structure.
+They're written in a specific markup
+language which I'll show in just
+a second and a documental file is required
+for every supported function.
+And so that provides another reason to
+limit the
+number of functions that are exported to
+the user.
+Because for any every function that you
+export
+you have to write a, a documentation for
+it.
+But in, the functions that are not
+exported you don't need to have
+any documentation for because they're not
+meant to be used by, by the user.
+You can also document things that are not
+functions.
+You can document data sets.
+You can document kind of basic concepts.
+Or you can provide a basic package
+overview.
+So these are all things that you can
+provide as documentation.
+So here's a simple help file.
+This is from the Line function, this is
+just
+part of the, kind of the base R
+installation.
+You can see that there's a name for the
+docu, for the documentation.
+There's an alias, see, this is something
+that will call
+up this documentation file, even if if
+you, if you do
+question mark line, then, you know,
+anything that's in the alias
+will call up this documentation file, so
+you'll do question mark.
+Your residuals [UNKNOWN] line.
+You'll also get this help file.
+And you can see that the title is, you
+know, robust line fitting.
+And there's a description, which is a
+slightly longer description than just the
+title.
+After the description you typically have a
+usage section which describes
+or shows how the function is called on, on
+its arguments.
+So this function only has two arguments, x
+and y, and so that's how you call it.
+After that you need to describe what the
+arguments are.
+And so the two arguments are x and y and
+you can see
+that they are, the arguments can be any
+way of specifying x,y pairs.
+After the describing the arguments, you
+talk, there's a detailed section where
+you typical go into more detail about
+various aspects of the function.
+Here there's just a few kind of a notes
+that are added.
+And then lastly there's a value section.
+The value section determines, describes,
+you
+know, what is returned by the function.
+So some functions don't necessarily return
+anything
+useful, in particular, plotting functions
+often don't
+return anything, they just have a side
+effect of kind of creating a plot.
+And so her,.in this case the line function
+returns an object of class tukeyline.
+Finally at the end you might have
+something, some
+references, for example, if we're
+implementing a method, a
+statistical method or something along
+those lines and it
+has a reference like a paper or a book.
+In this case it's a book.
+You can put those references in the help
+files,
+so people will know if they want to
+explore
+this thing a little bit more, if they
+want to
+read more about it, they know where to
+look.
+So that's your help, that's kind of how
+the help files look.
+Once you've got your R code, your R files,
+your description and your name space then
+you can start
+by building the package and there's a
+command line
+tool that comes with R, it's called R CMD
+build.
+And it creates the package archive file,
+which simply has .tar or .gz extension.
+Once you've built the package you can run
+a battery of tests on the package.
+So you can do this, use this, you can
+do this by running the R Cmd check
+command-line program.
+And this runs a whole set of tests to make
+sure that there's some, that everything
+is kind of consistent within the package
+structure
+and you haven't, for example, forgotten
+any documentation.
+Or that the, kind of the exports and
+the imports are, are kind of appropriately
+specify.
+You can run R Cmd build and R Cmd check
+from
+the command line, using a terminal or
+command shell type of application.
+You could also run them from the, from
+with
+in R using the system function in this
+way.
+R Cmnd check runs a, I said, I mentioned
+already runs a battery of tests.
+Basically it checks for example, if the
+documentation
+exists, if every, or exported function has
+documentation.
+It checks to see whether your code can be
+loaded it
+also checks the, kind of the coding style,
+so that there's
+no, kind of, basic problems there's a bit
+of, there's actually
+a code checker in the, in, in one of the
+tests.
+It checks for any errors that may, kind
+of, or common coding problems that may
+occur.
+If you have any examples in your
+documentation, it will
+run the examples to make sure that they
+actually run.
+It will check that the documentation of
+the arguments in
+your documentation matches the arguments
+that are in the codes so
+for example sometimes you might modify the
+argument list, of
+a function in your code then forget to
+modify the argument
+list in the documentation so it will check
+for that
+kind of mismatch And in particular, this,
+this is important because
+if you want to put a package on CRAN, it
+has
+to pass all of the tests in R Cmnd Check
+without
+any warnings or any errors.
+[BLANK_AUDIO]
+So that's the basic idea behind R
+packages.
+If you want to get started, a handy
+function to look at is package.skeleton.
+And what this does is, it basically create
+the skeleton directory structure.
+So you'll create the directory if you pass
+it the name of a function.
+So that's usually the first argument to
+package.skeleton.
+It'll create the directory, it'll create
+the R directory, the man directory.
+It will create a, kind of a dummy
+description file for you to fill out.
+It will also create a namespace file for
+then you can kind of flesh out.
+And it will put some documentation files
+in the man directory
+if you have any functions that are visible
+in your work space.
+So by default it takes all the functions
+that are kind of in your
+work space and writes them out to the R
+directory and the man directory.
+So if you have any, if you have a lot of
+extraneous functions in your work space
+you don't want to run this function.
+But if you, if all the functions that you
+kind of have in your workspace,
+okay you want to put into the package,
+then
+it will automatically do all that for you.
+So then all the documentation stubs are in
+the Man age.
+You just have to edit them to kind of
+customize them to your need.
+And so you need to fill in all this extra
+stuff.
+So the basic summary is that, you know, R
+packages
+are a systematic way to make R code
+available to others.
+It's very useful and it, and it's
+a standard way that kind of people
+understand.
+The standards are important because they
+ensure that packages have a minimal amount
+of, at least some documentation and will
+some robustness to kind of problems.
+And you typically obtain our packages from
+CRAN, Bioconductor, GitHub, or other types
+of repositories.
+The basic check list for creating in
+R package, is basically create a new
+directory.
+Create the R in the main sub-directories.
+You can also use packet skeleton for this.
+You need to write a description file, you
+need
+to put your R code in to the R
+sub-directory.
+You need to write documentation files in
+to the main sub-directory.
+Create a name space file, which defines
+your exports and imports.
+And then, and then build it and check your
+package to make sure it passes all the
+checks.
+So that's your basic template for building
+an R package.
+

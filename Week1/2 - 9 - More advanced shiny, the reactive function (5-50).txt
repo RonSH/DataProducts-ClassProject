@@ -1,0 +1,139 @@
+Executing it.
+Okay, so, sometimes so, reactive
+expressions so the render, the render
+statement, delete that 1 is unnecessary
+there, the, the render
+statement is a, these render plot, render
+checks et cetera, those
+are reactive statements, they react to
+widget input and so on.
+Sometimes in your code you, you want to
+have reactive code but you don't
+actually want it to be part of a render
+statement for a variety of reasons.
+You know for example you might want some
+code that gets
+reused in several render statements and
+you don't want to recalculate and
+do, redo the calculations for each, or you
+want your code
+to be neater, there's a variety of reasons
+why you want this.
+So there's a function called reactivity
+that just made for this purpose.
+Okay.
+So I think it's easiest to explain this
+in, in just an example.
+So here's the second example.
+So here I, I have this, you know,
+basically the same ui.r function.
+But imagine now I want to take my text
+input and add 100 to it.
+But I only want to do that once.
+I want to, oh, you know, I want to add
+100 to it, and I want to display it twice,
+right?
+So here in first in this output, I'm
+going to display my input incremented by
+100 and in
+this second one, I'm going to display my
+input incremented
+by 100 plus whatever number I put into
+text2.
+Okay?
+So it, you know, obviously this doesn't
+change the
+run time that much, but now we only have
+to increment it by 100 once rather than
+doing
+it twice once and each reactive rendered
+text statement, okay?
+So anyway, you, you might you know, you
+might have thought
+oh well, if I just put input, asterisk,
+text one plus 100.
+Outside of this reactive statement what
+would happen, Shiny would
+give you an error because you're trying to
+utilize reactive
+input outside of a reactive function or a
+render text
+function or something like that, that,
+that is reactive, okay?
+So it's, it's a little bit unusual, and if
+you're not used it, it's,
+and you're used to R, it's a little bit
+hard to get used to.
+Okay.
+So and this, just as opposed to you know,
+what would you the same exact
+functionality is to just add 100 in both
+rad, render text statements.
+But of course then you're doing this
+calculation twice, and of course this
+calculation doesn't take any time so it's
+irrelevant but you see the principle.
+So and then we're going to do, we're
+going to
+do run app and display mode equals
+showcase.
+And you know and again while
+inconsequential we only
+have to add 101 time rather than adding it
+twice.
+And then, you know just would also say
+notice the somewhat odd syntax for
+reactive variables.
+So, notice here when we actually want the
+values of X which was defined as reactive
+output, we actually have to call it as
+a, as an executed function with these
+parentheses.
+Which is a little bit unusual relative to
+normal R programming.
+Okay?
+okay, so, here is, my example.
+I'm, I've already started running the app.
+Here's my shiny server function right
+here.
+Okay?
+And notice this case I've put the X
+function, the added the 100 in the
+reactive statement.
+And it's running, and notice I've run
+display mode equals showcase.
+Okay, so right here.
+Okay.
+And then now, notice that so, so here you
+can see what code it's running.
+So if I if I put in x equals 100.
+Right, now it has output text1 equals 200.
+Output text2 is NA, because we haven't
+input anything.
+Now, when I put in 100 there, it
+highlights.
+Notice in the display mode, it highlights
+what it's, what it's doing.
+You can check on, ui.r also and see where
+it's, where it's, what it's running.
+Okay?
+And so you see, you know and just to, to
+prove to you that it does the same
+thing, let's [SOUND] what's the keyboard
+shortcut for commenting?
+Let's see, comment.
+Comment, uncomment is Ctrl+Shift+C.
+All right so let's do Ctrl+Shift+Cand then
+come down here, Ctrl+Shift+C.
+Okay, save it, stop, now let's run the app
+and
+we'll just show you that it does exactly
+the same thing.
+And, [SOUND] let's see, it gives the same
+exact output.
+It works just like before.
+But now instead it's, it's adding 100
+separately each
+time and in the, in the separate render,
+render.text statement.
+

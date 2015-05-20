@@ -1,0 +1,132 @@
+Okay.
+So let's just talk a little bit more about
+layouts.
+The sidebar layout that we've been showing
+is for sure the easiest.
+And then there's a more general layout of
+which the
+sidebar layout is created via its called,
+its fluid page.
+It's, it's a much more flexible style to
+use and
+is, it's basically just accessing the, the
+Twitter bootstrap styles.
+And you can go to this link right here and
+see a bunch of examples.
+And just tinker with the examples.
+So for example, in your fluid page
+statement you can
+have fluidRow statements can create rows
+and then the column
+function creates columns and you can just
+see in there
+how you can use R to, to create the
+layout.
+And you can have things like tabsets,
+navlists, and navbars for more complicated
+apps.
+And they're relatively easy to create.
+If you want to directly use the HTML you
+know, for a really complicated
+layout, you would want to do that, plus,
+you know, to be honest, if you know
+web development well, which I really
+don't,
+but if you really know web development
+well,
+then working with, R to develop the layout
+is probably kind of annoying to you.
+So, you know, if you, if you're familiar
+with R, and don't
+know web development very, very well,
+then, then this is probably prefect.
+But if you happen to know web
+developement quite well, then probably
+this is excruciating.
+So just create a directory called www in
+the same directory with server.r.
+So the directory www exists in the same
+directory as server.R.
+Server.R does not exist inside the www.www
+directory.
+Okay, I then have an index.html page in
+that www directory, okay?
+So, the page layout is in this directory.
+The server exists at the same root
+directory that this www directory exists
+in.
+Okay, hopefully I've beat that to death.
+Okay.
+And then you, you, your named input
+variables
+will be passed to server.R, so if you have
+an input of
+some type this is just a numeric text box
+number,
+and name here is equal to n so, input$n
+can
+be used in your server.R state, reactive
+statements.
+and, your server.R will have class def,
+definitions of the form,
+shiny something, so when you want to
+display reactive
+output in your html you need, for example,
+to call it
+you know, to say that, the class is, cla,
+class statement.
+And that's it.
+And you can, the examples are, are up here
+at this link.
+And you can do it more throughly there,
+but I just want to make sure,
+you know, it's, it's, it's really very
+easy if you know a little bit of web
+development it's, it's trivial if you know
+if you can get the a Shiny app and
+running and you web development than this,
+being
+able to do this should be no problem.
+So some debugging tools.
+Let's talk about debugging tools.
+Debugging Shiny apps is kind of annoying,
+because it's sort of not a core part of R.
+It's sort of built on top of R, so I
+actually find this display mode equals
+showcase incredibly useful, and you can
+use the
+cat, which is just like the C function,
+cat.
+the, the c programming language function,
+cat.
+Or, at any rate, it just displays, text,
+as standard out.
+So the R console, in this case, usually,
+if you're running, runApp from the R
+console.
+And then the browser function can, and it
+will interrupt execution.
+And so you can call the browser function
+conditionally.
+And, at any rate, Shiny has a whole
+article on debugging Shiny apps.
+And, you know, these are the, easily, the
+only three ones that I would ever use.
+mostly, I, I use the cat function to
+display the status of code in inside the
+app.
+That's what I find more useful than
+anything else and that's it.
+So, hopefully you're, you're up and
+running now
+with creating Shiny applications and, and
+I'm confident
+what you'll find is that you can go from R
+code to a web product very, very
+quickly, which is what we want people to
+be able to do, and we're excited to
+we're excited for people to start putting
+out
+their own web apps and see what they
+create.
+

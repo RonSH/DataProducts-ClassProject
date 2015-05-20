@@ -1,0 +1,318 @@
+Okay.
+Let's switch the
+slide there.
+Okay.
+so, let's talk about, there we go how it
+compiles it.
+So, our studio Basically just runs the
+code every
+time you save the document but if you want
+you can hit this little refresh button and
+it
+will run it, it will compile it for sure
+then.
+There's the you the, the Mathjax
+JavaScript library is loaded by default so
+if you use This command right there,
+dollar sign
+X squared dollar sign that's latech
+command for X squared and
+[SOUND] that just yields the
+mathematically type set X squared, okay?
+There's slide navigations in the preview
+that you could take a, advance the slide.
+You don't look at a lot of the, the
+nice html5 kind of effects in, in the
+preview pane.
+You have to view it in the browser.
+But in the Notepad icon it'll take you to
+that Slide in the slide direct.
+So click on more yields options for again
+clearing the knitr cache.
+Viewing in, in a browser.
+And if you just type view in a browser.
+It does not create the file in the
+directory that you're working in, right.
+It, you know, for me and I presume for
+you, it creates it in sort of the temp.
+Directory you know for your, for your
+application
+files, so in mine it's AppDatalocaltemp
+for me [SOUND].
+And then you can just create, you can use
+that also to create an html file.
+Then there's the refresh button.
+that'll, you know, refresh it if you've,
+if you've saved some changes and haven't
+run it yet, and then the zoom button
+brings up the new window [SOUND].
+Okay.
+So how do you change things?
+So, one thinks, if you notice like as, let
+me,
+I'm sorry let me get rid of that there you
+go.
+You notice like, this is, is kind of cool
+right?
+I don't know.
+I, maybe you can, maybe you would just
+view it as gratuitous sup, superfluous eye
+candy.
+But [COUGH] this cube effect, right?
+I did this for a a purpose.
+And the reason was to show you how you
+can just change some of the au, automatic
+visuals.
+So, you know, at the beginning right after
+each slide there is
+like a, kind of a [UNKNOWN] like code and
+you know that
+for example you can just put transition
+equals rotate and, and that
+that sets the transition to this cube like
+rotate if you do.
+For example transition linear, right?
+Which is I think the default then, then
+it'll switch to, to this sort of linear
+transition.
+See, like that's the linear transition and
+then there's the cube transition.
+The linear transition And notice I did
+this right after that
+slide so that it, you know, so that it
+occurs just for that slide.
+And then it'll go back to the default if I
+leave this option out.
+Whatever you put after the first slide is
+what it views as the deso, default.
+And there's some, a bunch of transition
+options.
+And this link right here.
+This link right here in the, in the
+presentation file will show you how to do
+it.
+Or give you a bunch.
+Actually, I think I like the default,
+probably best.
+I like just right to left, or left to
+right.
+So
+RStudio Present has a nice built-in
+hierarchical organization tool.
+So there's several types like section,
+sub-section, that sort of thing.
+So right after a slide, if you do the kind
+of [UNKNOWN] type code,
+that says type equals type name and sorry
+it's truncated a little bit here.
+But if you do type equals typename, then
+it will
+create a, an organic.
+It'll, it'll create the, the slide style
+for that level of organization.
+So, this style right here.
+This light blue background with the white
+headi, heading letters.
+That's the section so it's this is so at,
+anyway, this is of type section
+and then this link right here which is
+getting chopped off but, but if you
+go you know obviously if you go to the get
+hub it will have the
+right link And I'm pretty confident that
+everyone in this class can google search
+this.
+Anyway it'll give you the collection of
+sections.
+So you can have a nice hierarchical
+organization like
+latech or some of the, o, orr just or,
+ord, just like ordinary HTML and it has a
+different nice kind of formatting for each
+level of organization.
+So just by comparison here is the
+subsection.
+organization.
+I didn't put any text but you get the, get
+the
+point the background is white that the
+heading letters are black.
+Okay, you can do two columns right, so two
+columns is really easy so basically you
+just have the slide specified in the
+ordinary
+way but you put a bunch of content.
+And then on a line by itself.
+And I, I could only get it to work when I
+had a blank line before and after.
+You put three asterisks, and then it'll
+dump it into two columns.
+And then in the R studio site you can
+change the percent space of each column.
+If you want like one column to take 70%
+and
+the other to take 30% you can actually
+change that.
+You can do that in slidify too by, all
+this stuff you can do to slidify
+then after the asterisk you do whatever
+for column
+two and it'll put it all in two columns.
+All this, you know, pretty much everything
+you can do in both, well and, and
+l, we'll talk about that in a minute,
+[SOUND] see this got trun, truncated too.
+So the font family, I didn't have a ton of
+success playing around with fonts.
+and, and I'll tell you why in a second.
+So anyway, right after the slide if you do
+this kind of [UNKNOWN] like code
+font-family equals fontname.
+Then that will change the font.
+It's the, this is exactly the same way you
+would specify in an html document the font
+family.
+So you can just go to, to any like here at
+w3 schools,
+they have a bunch of web safe fonts and
+you can put any of those in.
+This is so it's the same way you'd specify
+a CSS mark family.
+And if you want to import a font, you can
+do font import URL to import fonts.
+So, this actual slide right here you
+could, you
+can tell the font it doesn't look that
+different.
+I hit that link.
+You can tell it doesn't look that
+different than.
+This font, but it's different.
+Is it different?
+Wait, it doesn't look very different to
+me.
+Anyway, [SOUND] I think it is a little
+different [COUGH].
+To me a lot of the Sans Serif fonts
+look the same, they all look like
+Helvetica to me.
+[COUGH] So anyway use font-import to
+import fonts.
+And so here's an important caveat, so I, I
+kind
+of learned this while I was playing around
+with the fonts.
+so, the, the fonts must be present in the
+system that
+you're presenting on, or, or it'll just go
+back to a fallback.
+It will go to a fallback font, and then
+I'm sorry I'm truncating the slider there
+a little bit.
+If you
+If you import a fond then you have to be
+connected to the
+internet, so if you're doing an offline
+presentation don't do don't import the
+font.
+So here's, you know, the font that I
+imported for
+this slide, it's called Risque, so, at,
+anyway it's called Risque.
+It doesn't seem that Risque.
+okay.
+So, you know, what's nice about our studio
+presenter is that it looks pretty nice by
+default.
+And it takes almost no time to learn.
+You know, probably if you're in this class
+and you've tried Slidify,
+you've seen that Slidify takes a little
+bit of time to learn.
+Rstudio Present takes base, if you're
+familiar
+with Rstudio, takes basically no time to
+learn.
+The, the start up cost is effectively
+zero.
+But if you really want to change things so
+slidify, you know kind
+of immediately you're, you're, you're
+closer
+to being able to tinker with everything.
+Not perfectly so but you're closer if you
+really want to tinker with everything.
+In either Slidify or in RStudio Present,
+you really need to know to some html
+and some CSS and, and probably some
+JavaScript
+if you really want it to get great.
+But definitely at least some html and CSS
+if you
+just want to do the, the presentate, the
+change in the style.
+So,
+If, if you have in your directory with
+your presentation file, if you have
+a CSS file with the same name, it'll just
+automatically load it up, or
+you can just use CSS in the, in the kind
+of [UNKNOWN] right after
+the slide definition, you can use, css:
+file.css, and it will import your style
+sheet.
+[SOUND] So you can, and if you want, you
+know, you, you can create a class,
+and you know, name it classname to get
+kind of slide-specific style control from
+your CSS.
+Or if u don't, if you want even more
+further control, and
+you don't even want it to, to be,
+slide-specific, if you want
+it to be a specific subset of a slide
+specific, then you
+can, you can have that class just be
+applied within a span.
+And then, so that's how you could change
+it permanently so that when
+Rstudio Presenter compiles it, it compiles
+it in the style that you want.
+You know, but you know, there's the other
+option, is that, you know, the
+end product is an html file and a style
+sheet and maybe some JavaScript.
+And you can just edit that as you want.
+But, let me just say, this should, this
+should be a last resort.
+You know, the whole point of doing these
+kind of reproducible presentations is that
+they're reproducible,
+and that if you change something in the R
+code, you get the, the presentation back.
+So you, you know you lose a lot if you
+edit the raw
+html at that point why bother having done
+Slidify or Rstudio presenter at all.
+But lets say you have some really final
+product and you
+want to get it just right and you don't
+want to bother with the.
+The intricacies of Rstudio Presenter or
+Slidify or whatever, then
+sure, you know, you can edit the html for
+that.
+But if it's like a, a presentation that
+you
+have to give frequently and update with
+new numbers every
+now and then then you're, you're making a
+lot of
+extra work for yourself by, by editing the
+html file.
+you, you, you're better off just figuring
+out how to get.
+The CSS file.
+right, the style right, in that way, every
+time you.
+

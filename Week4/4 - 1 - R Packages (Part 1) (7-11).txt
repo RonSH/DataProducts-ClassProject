@@ -1,0 +1,267 @@
+Hey everyone this lecture is going to be
+able building R packages.
+So this is a really a key product that,
+that you can build that
+implemented statics, any kind of
+statistical or
+other methodology that you develop on your
+own.
+And it's a great way to distribute your
+approaches to other people who use R
+because there are a lot of centralized
+platforms
+and repositories that you can take
+advantage of.
+So I'm going to talk about how the co, one
+of
+the basic aspects and pieces to, for
+building an R package
+and so that you can kind of know what
+part, what, what
+goes into building it and what, how it can
+be done.
+So first you know, what's an R package?
+The basic idea is that it's an exte, it's
+a mechanism for extending the basic
+functionality of R.
+So, when you download R, you know, you get
+a couple of base packages.
+Things like graphics and GR devices there
+are
+kind of implement this kind of fundamental
+functionality.
+But there's all kinds of functionality
+that's
+not included in the basic R distribution.
+and, and it's, that's because it's
+basically impossible to kind of
+include all, everything that everyone
+might need in a single package.
+So there's an extension mechanism called
+the package system that allows other
+people to write functions and to write
+other kind of functionality and to
+then, and then so then other users can
+kind of add it on
+or tack it on to the, to the kind of base
+R installation.
+And so typically it's a collection of R
+functions or data objects.
+That are kind of wrapped together with
+some other kind of elements like
+documentation.
+The goal of the R Package System is to
+kind of organize this stuff in a
+systematic way so that any time you get an
+R Package, there are a couple of things
+that are kind of common to all packages
+that the same things are always in the
+same places, and the, and you always
+access
+certain things, like help files, in the
+same way.
+So there's a certain amount of consistency
+that's there, so that users can
+kind of manage their expectations, any
+time they get a new R Package.
+There are thou, literally thousands of R
+packages written by people all around the
+world.
+[BLANK_AUDIO]
+So where can you find R packages, well
+typically you might go
+to a central repository, such as the
+comprehensive R art network or CRAN.
+There are, another big repository is
+called Bioconductor, which contains a lot
+of
+tools for bioinformatics and genomics and
+those kind, and tha, those kinds of areas.
+There are also a lot of packages that
+are hosted on source code sharing websites
+like
+GitHub Bitbucket, Gitorious and so you
+can, you
+can attempt to install packages from those
+repositories also.
+Packages from CRAN of Bioconductor can be
+installed
+with the install.packages function that
+kind of comes with R.
+And all you need to do is specify the the
+name of the package where the
+repository was coming from, and it will
+get,
+install download and install a package for
+you.
+Packages from GitHub for example can be
+installed using the install
+GitHub function from the devtools package,
+that's a very handy tool.
+If you're building a package, you don't
+have to put a package
+on a central repository in order to
+distribute it to other people.
+But you can just kind of send them a
+file or wh, whatever makes it, whatever's
+easier for you.
+But putting the packages on a central
+repository, is useful because it, it
+allows anyone to really find your package
+and install it if they want.
+So what's the purpose of making an R
+package?
+I mean, why would you want to go through
+the effort of, of doing this?
+When you can just kind of send someone a
+file with your code in it?
+And so there are a number of advantages
+of having an R package available for other
+people.
+First of all it's it, it's a structured
+format that
+other people kind of understand if they
+use other R packages.
+Second of all, documentation is required
+in an R package, so it forces you to
+write some documentation and to explain
+how
+your function should be used to other
+people.
+You have, you have to document the
+arguments and
+you have to document the kind of the
+return values.
+Another thing is that it, it allows you to
+kind
+of create a well-defined API or
+application programmer interface so that
+you can specify what functions the users
+should be calling,
+and what functions in particular the user
+should not be calling.
+And so that way you can say, okay well
+here if I, if you're
+going to make some functionality available
+to people,
+and they should only, and you only want
+them to access it through using a single
+function, then you can say in
+your R package, this is the only function
+that you need, that you can access.
+That way you could hide and abstract a
+lot of the implementation details away
+from the user.
+So that, if you need to change them in the
+future, you know, you can change them,
+without having, without ruining the
+interface that you've given
+to to the public and for users to use.
+It's also, you, also typically easier to
+maintain an R package because the
+structure and the documentation required
+if for some reason, you decide you don't
+want to maintain your package, or you
+can't maintain it you could always kind of
+pass it off to someone and then the
+structure's already there for them.
+I think, one advantage, I think, is that
+there's some standards for a kind
+of reliability and robustness that people
+will have faith in so they know that
+at least if it's on CRAN, it passed a
+number of checks and that
+it will load properly and kind of
+not having a problem immediately on your
+system.
+[BLANK_AUDIO]
+So, the bas, the basic package development
+process kind of goes something like this.
+It may vary across different people, but
+there's usually some element of this
+process here.
+So you typically write some R code in a
+script or in a .R file.
+And that's fine and you kind of write your
+functions.
+You kind of debug things.
+You try things out.
+And then you decide, maybe this code is
+very useful to you.
+But then at some point you might decide
+that you want to make this code available
+to others.
+Or you might just want to kind of m, make
+it available to yourself in a much more
+structured way.
+Maybe you're going to kind of finish up a
+project, and
+kind of going to want to leave it in a
+state that's kind of, maintainable.
+And so, the idea is that you'll, you'll,
+typically you'll take,
+you know, the R code that you've written,
+which is in
+these R files, and you'll incorporate it
+into the R package
+structure, which I'll talk to you, talk
+about more in a second.
+Then the next thing you typically do is
+write
+some documentation for the function, for
+the user functions.
+These are the functions that are, that are
+public and available to the user and then
+you
+might think about including some other
+material like examples,
+or demos, or data sets or tutorials, or
+vignettes.
+Once all that's done you package it up and
+you've got your R package.
+So once, once you've got your R package
+you could
+just stop there you could have it
+installed on your system,
+you could kind of email it to a pers, to
+a friend or if you want, if it's not that
+big.
+But the most logical thing to do often is
+to submit it to a repository like CRAN or
+Bioconductor.
+You can also push the source code to
+something like GitHub, a source code
+sharing site, so that other people can
+look at it and modify the source code.
+And typically the scenario, there are two
+scenarios that you will run into
+once you make your package public to the
+or available to the public.
+The first is that you know, other people
+will
+use your code, they'll tell you about you
+know,
+problems that they encounter, and they'll
+just let you
+know and then they'll expect you to fix
+it.
+The other possibility is that they will
+you know, look at your package,
+they'll look at your code and they'll, if
+there's some problems maybe they'll
+figure out what the fix is and they'll fix
+it for you, and
+then they'll show you the changes and then
+you can incorporate their changes.
+Either way you know, I think it's, it's,
+it's
+useful to have other users looking at your
+code
+and helping you improve it, so this is a
+real benefit to making your code available
+to the public.
+And then once you've incorporated these
+changes, these fixes into
+your package you can kind of release a new
+version.
+

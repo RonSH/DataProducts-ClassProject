@@ -1,0 +1,797 @@
+[BLANK_AUDIO]
+Hi everyone.
+This lecture's going to be about yhat.
+Yhat is a really cool kind of tool that
+allows you to, to
+take your R function that maybe implements
+a prediction algorithm or something else.
+And to put it up on the web, to create
+an instant kind of API for other people to
+access.
+So the idea is that you can take your
+function
+and kind of create a back end kind of
+computing engine.
+That allows other people to develop front
+ends that can access kind of the,
+the kind of special algorithm, or the, or
+the really cool model that you developed.
+And this so if you're working at a company
+or if you're working at an organization.
+Where you're the kind of data analyst,
+you're the engineer
+and you've created this model based on all
+the data
+you've collected or all the information
+you have and this
+model can predict things that are
+important to your organization.
+Then the other people like web developers
+or front end developers can kind of build
+off
+that work give, using the API that you
+produced by kind of uploading it to yhat.
+So.
+I want to talk a little bit about, you
+know, there's
+step two parts to how to use this type of
+service.
+And so I'm going to, the first thing I'm
+going to talk about is how
+to build the back end, how to implement
+the models on the web.
+And then the second part we'll talk a
+little
+bit about how you access it from a front
+end.
+So the first part I want to talk about is
+writing an
+R function and sending it to yhat to build
+the back end.
+So the example I'm going to use is a
+pretty simple example, but I
+think it demonstrates all the key features
+of how you use yhat from R.
+The example is basically I want to be able
+to predict average
+levels of particulate matter in ozone
+anywhere in the country, right.
+So the US EPA has a nationwide monitoring
+network that measures particulate matter
+in ozone pollution.
+[COUGH] but you may want to know.
+You know, what is the level of pollution
+at a place where there's no monitoring?
+And so one of the simplest things we can
+do
+is say, okay, even if, if there's a
+location that doesn't
+have monitoring, a monitoring station we
+could just find the
+closest monitoring stations to that
+location and then take the average.
+You know, this is a very simple spatial
+prediction model.
+And so I can give, I can, I want to
+be able to take a latitude and longitude
+coordinate.
+And then find, they say, the closest find
+the monitors within ten miles of this
+location.
+And then take the average of those
+monitors,
+and that's what I'll use as my prediction.
+For the pollution levels at that point.
+So it's a very simple model.
+There's no spatial smoothing, there's no
+aggregate
+kind of interpolation or anything like
+that.
+You could obviously improve upon it but I
+think it's not really
+necessary to just, just demonstrate
+kind of
+how to use something, something like yhat.
+So I'm going to build that model, and then
+we'll send it to yhat in this part
+and then the next part I'll talk about how
+to access the models from a front end.
+[BLANK_AUDIO]
+I've loaded up R Studio here and I've got
+an empty kind of workspace here.
+So the first thing I'm going to do is, I'm
+going to I'm
+going to talk about the data that we're
+going to use for this project.
+So it, I'm in, in my working directory.
+I've got a file, a file called annual all
+2, 2013.
+So this is the annual average.
+Of all the pollutants that EPA measures
+for the year 2013, so
+just a, it's a single number for the year
+and just gives
+you kind of an average level of kind of
+what the pollution
+is at that area for, for all types of
+pollutants that EPA monitors.
+So I got this data from EPA website, and I
+got the URL down here.
+And so you're free to download this data
+and,
+and try to reproduce this example if you
+wish.
+So the first thing I want to do is take a
+look at this data set.
+I'm going to read it in with our read.csv.
+[SOUND]
+So
+it's not a particularly large data set, I
+think it has on the order of 70,000 rows.
+So we should just be able to read it in
+with the read.csv.
+And there we are 68,000 rows, so there we
+are we're going to do a quick stir on it,
+and
+you see there's quite a few variables.
+Now the main variables, that that we're,
+we're going to be interested in
+are the kind of the location and the value
+of the pollutant.
+So each row in this data set, represents
+the value from a.
+Given monitor for a given pollutant and
+for a given type of measurement.
+And so we're going to want, you want to
+care
+about a couple of variables first as the
+latitude.
+So that tells you kind of what latitude
+the monitor is looking at.
+And the latitude, of course, gives you the
+longitude.
+So latitude [INAUDIBLE] gives you the
+location of the monitor.
+The other thing we're going to want to be,
+we're
+going to want to know, is that, what's
+called the parameter name.
+That's another way of saying that the kind
+of name of the pollutant.
+So you can see that this is a factor with
+491 levels.
+There are 491 pollutants that are kind of
+measured in this data set.
+So we're going to need a parameter name to
+kind of isolate the
+specific ones that we're interested in,
+which is our particular matter in ozone.
+The last thing we're going to need out of
+this data set is down here
+and it's the arithmetic mean, so that
+gives us the average level, of, of
+whatever
+pollutant that we have to be looking at,
+over the course of the year 2013.
+So it's those kind of four key variables.
+Are the ones that we are going to
+care, we're going to worry about for this
+example.
+There are a lot of others, a lot of other
+data in this
+data set that you could use and may be of
+interest for you.
+And so it is worth poking around to take a
+look so we
+are going to focus on these few variables
+for this data, for this example.
+So now that I've kind of pulled up the
+data set
+and know what I'm looking at, I'm going to
+start a script.
+A new script.
+I'll start a new R script here.
+And we'll get this out of the way and so
+of course the
+first thing I need to do is I need to
+build the model.
+And so in order to build the model, I need
+to read in all the data.
+So let's let's try to read in the data
+again.
+[SOUND]
+So I want, I don't need to do that since I
+already did it a second ago.
+And the first thing I want to do is subset
+this
+data set to just include the variables
+that I am interested in.
+And also to include the pollutants that
+I'm interested in.
+So I'm going to create a subset here with
+subset function.
+And I want subset d.
+First of all, I just want two pollutants
+for pm 2.5 and those ones.
+I'm going to subset the parameter name.
+To begin.
+It must be either PM2.5, it's called local
+conditions or ozone.
+Furthermore there's different ways of
+measuring pm
+2.5 in ozone, so different types of
+standards, so I want to kind of narrow it
+down to a specific type of standard.
+So let's say pollutant standard and yes
+the variable name is spelled
+incorrectly in the data set so we have to
+go with it.
+In [SOUND] um,ozone eight hour
+and PM25 annual 2006.
+So you, if you're wondering I, I kind of
+already knew these from before.
+But you could of you know looked at the
+data set
+to see what the values of these variables
+turn out to be.
+And then I just want to select out the
+variables that I'm interested in.
+So it's the longitude, which is like the x
+coordinate, the latitude, which is like
+the y coordinate.
+The parameter name.
+And the arithmetic mean [SOUND].
+Okay, so let's take a look at this.
+[SOUND] Send it to our studio, and we can
+take a look at our new data-set here.
+And you see it has the, kind of, only the
+four variables
+and the n over on the fourth column here
+is the arithmetic mean.
+Which gives us the value of ozone PM2.5 at
+the various locations [COUGH].
+Okay, so we've got our data-set here and
+one other thing we're going to
+want to do is kind of take the average of
+different measurements at each locations.
+Sometimes different at locations is more
+than one
+monitor so there may be a repeat
+measurement.
+So we're just going to average over those
+repeat measurements and not worry about
+them.
+So I'm going to create a separate data,
+data frame here called.
+Pollution average, and I'm going to
+aggregate
+over those repeats if there are any.
+So I'm just, aggregate over the arithmetic
+means [SOUND].
+And I'm going to do it by.
+[SOUND] Go down here.
+Longitude [SOUND].
+Latitude [SOUND] and parameter name.
+And
+I just want to take the mean of the, the
+across
+the repeats and I, and I [INAUDIBLE] true
+to this case.
+Okay, so let's go back up here [SOUND].
+And now you take a look at our new data
+frame.
+[SOUND]
+You can see that there are things that
+have been averaged over.
+So one of the things that I want to do is,
+the irony in
+function always gives kind of the, the
+variable that you're averaging, your
+aggregating over.
+It gives the name x, which is not
+particularly useful.
+So I'm just going to rename that
+variables will be, I'll just call it the
+levels.
+It's the level of the pollutant [SOUND].
+Also since we subsetted the data-set to
+[COUGH] the parameter name, which is
+a factor, you'll recall I had 491 levels
+one for all the different pollutants.
+But since we the subsetted of the data
+set.
+It only has two pollutants that's why I
+want to recode that
+factor so that it only has two levels now
+instead of 491.
+So I'm just going to say, pull average out
+is transform,
+parameter name.
+I'm just going to say refractor it so that
+it has two levels, instead of 491.
+Okay so let's send these through oops used
+the wrong function there.
+[SOUND] There we go.
+So one last look at this data frame.
+And you can see now, I've got a everything
+set.
+So, [COUGH] so we've got our data ready to
+go.
+But one of the things I'm going to do is
+to remove the
+data that we no longer need, so that kind
+of unprocessed data,
+because when we upload our model to yhat,
+we wa,wanna kind of want to
+upload the minimum amount of information
+that we need to run our model.
+And since we don't need the raw date
+anymore.
+I am just going to delete them with the rm
+function.
+It's going to delete the original
+variables here.
+So, alright.
+And so now the last thing I want to do, is
+create
+a new data frame that just has the
+locations of the monitors.
+Because we are going to need this little
+kind of set of locations in order to
+calculate the distances between the point
+that we
+want to, to kind of a measurement have.
+At a point that we want a prediction at,
+and the di, and the locations of all the
+monitors.
+So I'm going to create a separate data
+frame
+here, which is just the matrix of the
+locations.
+[SOUND] Okay.
+Okay, so we've got our data set up now,
+and so the next
+thing we'll have to do is write our
+prediction function.
+And so what, the, one of the constrains
+that we have to work under when we're
+writing
+our prediction function is that the input
+data has
+to come in the form of a data frame.
+So anything that you can put in the form
+of the data frame is what you'll be.
+Will be valid for kind of this type of
+setup.
+And then the output also has to be in the
+form of a data frame.
+What goes on in between is not, you can
+pretty much do whatever you want in the
+function.
+But just the input and the output have to
+be as data frames.
+And so the data that we're going to input
+into this function arg is going to include
+three variables.
+The longitude.
+The latitude and the radius.
+So the radius determines kind of how far
+away we look from a
+given point to find monitors that we can
+use to average over.
+So monitors that are close by will
+probably be more related to
+the, the level actual level of pollution
+at a given prediction point.
+Whereas monitors that are really far away
+will be probably less related.
+Of course if we choose a really small
+radius there may
+not be any monitors nearby and we'll be
+left with no prediction.
+So we want to balance between having a
+large enough radius.
+Where, so we could actually find some
+monitors and
+but having a radius that's not too large
+so that
+the actual levels of, at those monitors
+are not
+related to the, to the point where we
+want to predict.
+So again, the input's going to be a data
+frame, it's going to have a longitude,
+latitude and the radius in, in miles for
+how far we'll look for monitors.
+Okay so I'm going to use.
+I'm going to call my function pollutant.
+And I'm going to, just going to take a
+data frame as input.
+So I'm just going to call it df here.
+And let's start off this function.
+So one of the things we are going to
+actually
+have to do in this function is to
+calculate distances.
+On the earth.
+And so in order to calculate distances on
+the earth,
+we need a special function that can
+calculate grid circle distances.
+Now, this function essentially calculates
+distances on the surface of a
+sphere which is not exactly like
+calculating distances on a plane.
+And so we're going to use a function in
+the fields package.
+And so I need to, I'm going to load the
+fields package here.
+[SOUND] We don't have this installed on
+your computer already.
+you, you can install it, in our, install
+that package.
+Now I've got my fields package loaded, I'm
+going to write my function.
+And so the input is going to be, remember
+it's going to be,
+a data frame that has a longitude, a
+latitude, and a radius.
+So I'm going to assume, that the So I'm
+just
+going to write a comma here actually, that
+the input [SOUND].
+And I'll say longitudes, the variable
+called long, which is longitude.
+lat, which is the latitude.
+And then radius [SOUND].
+In miles.
+[SOUND]
+Alright.
+So the input's going to be this data
+frame.
+The first thing I want to do is create a
+matrix o, of the location.
+I'm going to it, call it data matrix and
+-then say lon, lat.
+And then I'll, I'll extract the radius out
+of [INAUDIBLE].
+I probably don't have to do this, but I'll
+do it anyway.
+So you have separate variable [SOUND] and
+then the, then
+the most important thing I want to
+calculate the distance between
+the input point which is like, which is
+the this
+x matrix and all of the monitors in my
+data set.
+Which is this monitor data matrix that I
+calculated previously.
+So what I am going to create is the
+distance matrix that on the.
+That's going to be kind of the, the size
+of which is going to be
+the number of monitors by the number of
+points that we want to make predictions.
+And so that's what this artist, earth
+function does.
+It calculates the distances between all
+the monitors in my data
+set, and all the points at which I want to
+make predictions.
+So then the, once I've got that, I better
+save it to something.
+So once I've got that matrix of distances,
+I want to loop over all the prediction
+points and
+find, okay, how a, which of the monitors
+that
+are within my radius distance of my
+prediction point.
+So I'm going to use l plot to do that,
+so I'm going to identify the monitors that
+I want to use.
+Because they're within the radius and I'm
+going to l
+apply over the number of columns in this
+data set.
+Sorry, in this distance matrix and I'm
+just going to say which of these
+distances are less than or equal to, are
+less than the radius.
+Okay, that's all I want.
+It's going to return an in, a set of
+indices into this distance matrix.
+Containing with the monitors that happen
+to be
+less than the radius in, that I'm
+interested in.
+So once I've got that less, that set of
+indices, I
+can go and calculate the levels of
+pollution for each of these
+for each of these prediction locations.
+So I can go in and I want to call it
+supply over this list of indices and I'm
+going to function,
+call, function idx, so it's going to
+passive the list of,
+the vector of indices as I'm supplying
+over the list.
+And I'm going to take my original data
+matrix
+here, which I have saved on the outside.
+And subset with the indices.
+And then I'm going to t-apply over the
+level.
+By parameter name.
+So remember there's two parameters we're
+interested in is ozone and PM2.5.
+So I'm going to t-apply with that and now
+we're going to calculate the mean.
+And that's it, so that'll give me a
+vector of levels,let's say a vector of two
+levels.
+With one for ozone and one for PM2.5.
+For every prediction location that I input
+into this function.
+And the next, so the next thing I just
+need to
+do is calculate, is to convert this thing
+to a data frame.
+So I'll call d levels
+okay I'll do transpose that because it's
+that don't look right.
+And then, and then I'm going to return
+data frame [SOUND].
+That has my input data, along with my
+prediction of values.
+And that's it.
+So that's my pollution function.
+And, and this is the function that I'm
+going to that I want to make
+available to, either to myself or to other
+people through a kind of web platform.
+So this is the key prediction function
+that we're going to make available.
+Okay, so let's just test out this function
+that we've written, just
+really quickly in R before we start
+uploading it to the web service.
+So I'm going to send it to R, and
+I'm going to give it some data.
+So I need to give it a location of a city
+of or give it some location, so let's just
+find a location.
+I don't, have all my lat-longs memorized.
+So I'll say where, where's Baltimore?
+located.
+Okay so there's the so 39.28 and 76.61.
+So let's put that in to here [SOUND].
+So we'll say The longitude, is minus
+76.61, is that right?
+Yep.
+And then the latitude is.
+39.28, and the radius we'll say is.
+I'll say 40 miles [SOUND].
+[SOUND] And so you can see that the
+average ozone is about 0.044.
+Parts per million are ppm.
+And then the PM2.5 local conditions, the
+average for 213 is 8.9 micrograms meters
+cubed.
+So that's great it's not at particularly
+high levels
+so that's good for us and here in
+Baltimore.
+And it looks like our function appears to
+be working reasonably well.
+Okay, now we've got our function written,
+it predicts
+pollution at an arbitrary location given
+the longitude and
+the latitude and the radius, so the next
+thing
+we want to do is upload our function to
+yhat.
+So there's basically three functions that
+you need to write.
+In order to upload your, your kind of
+prediction function to yhat.
+And then once you've done that it's ready
+to go.
+So it's actually a very simple process.
+And it's made particularly simple by the
+the yhat R package.
+So if you don't have the yhat R package
+you need to install it from Cran.
+You can be using install that packages,
+and then you're pretty much ready to go.
+So we'll try that out right now.
+Okay, so the first thing I need to do is
+install the
+yhat pack yhat R package, so let me do
+that right now [SOUND].
+It may install some dependencies in your
+system if you don't have them installed
+already.
+So now I can Load it into R and there we
+go.
+So there's three functions that you have
+to write.
+There's one that's called model require.
+So I'm going to, I'm going to sketch these
+out
+right now [SOUND] before I actually write
+them.
+There's one called model transform
+[SOUND].
+And and the key one's called model
+predict.
+So [COUGH], the first thing you need to,
+so model require basically loads all your
+dependencies.
+Often, there'll be functions here, like
+calls to library, if you need a package.
+So if you recall, we need the field, the
+fields package for this function to run.
+So I'm going to call library.fields.
+And that's pretty much the only dependency
+that I have on
+this function, so that's all that model
+require is going to have.
+If you don't have any dependencies for
+your prediction function.
+You actually don't need to define the
+model require function, it's an optional
+thing.
+So the next function is model transform
+which takes your
+data frame, it takes your input data frame
+as an argument.
+And this, basically, is needed if you need
+to transform the data
+in any specific way before you feed it
+into your prediction model.
+This may happen in certain situations.
+It doesn't actually happen here, so we
+don't need
+to transform the latitude, longitude, or
+radius in this model.
+So I'm just going to return the input and
+so that's that's pretty simple.
+And then of course, the prediction
+function just does your prediction.
+And since I already wrote the function
+that does
+the prediction I don't really need to put
+anything here.
+I can just say pollutant which is the name
+of my function and
+just pass it the, it will take the input
+data as an input.
+So these, so then, and then we know that
+pollutant will return a data frame of the
+results.
+So that's pretty much it.
+You can see it's fairly simple.
+And then the last thing you need to do is
+you need to deploy it to yhat.
+So, we've written pretty much all of the R
+functions that
+you need to write in order to deploy your
+function onto yhat.
+But before we can do that, there's are a
+couple things you need to do.
+First, you need to create an account on
+yhat.
+And then you need to be able to, once you
+create an account,
+you'll have a login name and you'll have,
+particularly you'll have an API key.
+That will uniquely identify you to the
+system.
+Once you have an API key, you can upload
+models.
+And you can run them from their system.
+So let's talk really quickly about how to
+do that.
+Okay.
+Okay, so first thing you need to do is go
+to the yhat website.
+So let's, we'll just go to yhathq.com.
+And you can see this is their website.
+And the first thing you'll need to do is
+to, is to log in.
+If you don't have an account already
+You'll have to create one so let me, I'll
+click on the Login here.
+And it'll have don't have an account and
+it'll ask you to sign up.
+So you'll type in your email address,
+whatever email address you want.
+And a password.
+So I've already done this.
+I'm going to log in here with my email and
+password [SOUND].
+And so here is my kind of dashboard I, my
+user name is here, my API key is here and
+so
+the first thing I want to do is is upload
+my model to the server.
+So I need to be able to cut and paste this
+kind of stuff here.
+So for, I need to create a vector.
+I call it like a yhat config vector here
+in R.
+And it's going to contain three things.
+First is the user name.
+And so that's just my email address
+[SOUND].
+The second is going to be my API key.
+And then I need to take that from here, so
+I can't memorize this so I'll just cut and
+paste it.
+And the last thing is the the URL that,
+which is going to be called the
+environment and that's just the HTTP this
+URL to the yhat website [SOUND].
+And so you can follow documentation on
+the, on the
+website if you want and it has all this
+information.
+And then the last thing I need to do is
+call yhat deploy and give it a name for.
+The model, I'm just going to call the
+model pollutant, because it's convenient.
+So last thing I need to do is just load
+all of these things into R and then deploy
+the model.
+So I'm just going to send these to R here.
+And then deploy the model.
+[SOUND]
+[BLANK_AUDIO]
+And you'll see, you'll get a data frame
+back, that contains a little bit of status
+information.
+And particularly the model's being
+uploaded, and currently being built.
+So, we can go to the yhat page.
+[SOUND] And if I reload your dashboard,
+you can see okay, that's pollutant.
+Model is online, so that's good.
+It's version six so I've actually update,
+I've uploaded this
+model five times before so I'm actually on
+version six.
+you'll, you doing it for the first time
+you'll be on version one.
+And, and so you can actually run this
+model.
+So if I click on the model here you'll
+get a little more information about how it
+works.
+You can restart your model if you want.
+Or you can delete it completely.
+And so I'm just going to, and so, that's
+kind of like how it setup
+you can look at the various versions that
+you've uploaded in the past.
+So this is what I've done in the past.
+And you can el, el, look at the, look at
+the logs [INAUDIBLE].
+So that's pretty much, the, that's part
+one.
+Basically, I have taken a prediction
+function.
+I have written it R.
+And, I've uploaded it to the yhat server.
+So, now.
+So, what?
+How do I do it?
+Then how do I access, the, kind of,
+prediction model that I built here.
+It's going to be what I'm going to talk
+about in the next video.
+[BLANK_AUDIO]
+

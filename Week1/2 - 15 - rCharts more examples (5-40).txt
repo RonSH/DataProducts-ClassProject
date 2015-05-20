@@ -1,0 +1,155 @@
+The code to do that was really just this
+one line right there.
+So really nice, n1 is really the, or NBD3
+was really a nice JavaScript library.
+So Slidify interactive is what I'm using
+to add these graphics into Slidify.
+Later on we'll have lectures on Slidify
+that you can watch.
+These are the commands, there's a, if you
+google
+on Slidify interactive Ramnath will go
+through the examples.
+it, it's, you know, it's kind of a
+nontrivial endeavor to do
+this so I'm just putting it out there that
+this is what
+I'm doing for this po, this exercise but
+you can actually just
+view the things directly in R or have it,
+launch a web page.
+So just a couple of thoughts.
+So the object n1 contains the plot.
+In our studio typing n1 brings up the plot
+in the
+R Studio viewer or you can just assign it
+to an object.
+If you do n1 asterisk and then tab, you
+can see the various functions contained in
+the objects for.
+Example n1$html prints out the html n1save
+file
+name as what I'm using to bring it back
+into a slidify document, the save function
+just saves
+an html document with the plot embedded in
+it.
+So let's deconstruct another example.
+So for the time being just think that the,
+forget about that
+command in that we have reformatted the
+data in the form that we want.
+And we still want to have an outcome
+SepalLength a public, plotted as a
+function of SepalWidth.
+And you know, kind of conditioning on
+species.
+Okay, so that seems pretty reasonable
+notation for that kind of
+plot, this is our plot from a different
+graphics library, and
+I'm going to assign it to the variable R1
+like before,
+if I didn't do that it would just show the
+plot.
+Data equals iris, color equals species,
+type equals
+point are options for the specific kind of
+plot.
+The options aren't terribly well
+documented
+in our charts, but, you know, like
+I said, you can search on the internet and
+get a lot of, examples.
+And basically you can work around with the
+examples.
+And so here, you see, how it does the
+grouping and then does, it does the dot
+plot.
+So here's the species, here's the color,
+it's equal with the horizontal axis,and it
+breaks it up into several plots, but you
+can see you get this nice interactive,
+highlight mouse over with the points,
+'kat?
+Here's a, here's a so called Facetted
+Barplot, and then, just changing type
+equals bar.
+Right, and I assigned it to the variable
+r2.
+And then remember that other stuff, this
+was just
+so that I can bring it back into slidify.
+Otherwise, you would just work with the
+object r2.
+You wouldn't have to reprint it out to
+the, you wouldn't have to
+cat the that's what's embedding it into
+Slidfy for me.
+So again you see it's basically the same
+plot, but you've
+switched it to a bar plot.
+So how do you get the JavaScript/html or
+publish a rChart?
+So here's my plotting command.
+Print, just prints out the relevant
+JavaScript notation.
+Save, saves it as an HTML file.
+Publish, you can publish it to Gist which
+is just a quick GitHub snippet of code.
+You have to have the package RJ sign
+installed to do that.
+You can save it to R Pubs which is the
+collection of R public, R graphics, and
+and so on.
+But, I like to put 'em into Slidify
+documents is what I like to do.
+But that's maybe a little bit more
+finicky.
+But once you get used to it, that's what I
+like to do.
+So let's just go through some more
+examples, to see
+the sorts of things you can do with R
+charts.
+So I would notice that, Ramnath mentions
+that the io2012 style
+for HTML slides, and polycharts seem to
+have some conflicting js.
+They seem to be working fine for me, but
+I do get errors if I load this polychart
+library.
+So if you're debugging with polychart and
+IO style,
+factor that in if you're embedding R
+charts into Slidify.
+If you're not, then none of this is
+relevant
+for you if you're grabbing the HTML or
+something else.
+So here's this plotting package called
+Morris.
+And what I like about Morris you can see
+the
+you can see that the plot here my x is
+date.
+And my y, I'm giving two ys.
+Where here it's two columns, and my type
+is line.
+I really like this plot, it's a nice time
+series plot.
+Because what it shows is you have these
+nice time series, but as you move it
+along, you can see it keeps the points
+constant in a horizontal line between the
+grouping variables.
+So you can kind of see, you know, here in
+1980, between the two different grouping
+variables, what the values were.
+Okay, so this is actually a really nice
+nice little plot.
+XCharts here's just another one.
+This is what this example looks like.
+I'm not too enthusiastic about this one.
+But maybe xCharts has a lot of
+

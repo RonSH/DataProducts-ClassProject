@@ -1,0 +1,121 @@
+Compile it to get the way you want it to.
+Okay, so here's the big question, which is
+Slidify
+versus R Studio Presenter, and I was a
+little
+surprised when I first saw R Studio
+Presenter because
+it has a lot of overlap with Slidify, and.
+So it, it my first question was why, why
+do these two things exist?
+Why not just either one group or the other
+just adopt the other one.
+So here's my impression.
+So Slidify, to me, gives you a lot more,
+more flexible control from the R Mark Down
+file.
+So you have a ton of kind of more of just,
+options, as you play around with the
+R marked down file or what in R Studio
+Presenter is called the R pres file.
+And it's really undergoing constant rapid
+development, ranmith is
+a mad man and he is constantly developing
+it.
+It has a larger user base, which mean,
+like, there's lots of questions answered
+on Stack Exchange.
+And Ramnath seems to jump on Stack
+Exchange almost immediately.
+And he put in lots of styles and options
+by default, so
+you can, you have all the different HTML5
+slide decks are basically included.
+and, you know, you can, you can.
+You, you can do them all fairly easily.
+There's a much steeper learning curve to
+go from
+zero to functional in Slidify, a much
+steeper learning curve.
+And it's and I would describe it as more
+kind of command line oriented.
+Our studio is much, our Studio Presenter
+is much more integrated within our studio.
+and, and it's probably preferable to, to
+work with the R
+Studio GUI, so it's, the R Studio
+Presenter is embedded in R Studio.
+Which is a good and bad thing.
+If you're more of a command line person,
+you probably maybe want
+the kind of way which Slidify has
+implemented a little bit more.
+Although, I'm confident there's probably a
+way you can do most
+of the R Studio things from the command
+line as well.
+so, but I think of it as more GUI
+oriented.
+R Studio Presenter is ridiculously easy to
+get started.
+I basically knew nothing and created this
+presentation and lecture in one day.
+And, it, it just one thing that struck me
+about our
+studio presenter relative to Slidify was
+how easy it was to learn.
+Now, to be fair, I knew Slidify first so I
+had a lot of knowledge to build on,
+but just my impression of the software is
+that it is extremely easy to use.
+[COUGH] And part of the reason it's easy
+to use is it has a much
+smaller set of kind of canonical styles
+and options.
+Right?
+So you know, this kind of paradox of
+choice type thing where
+we actually are a little bit happier if we
+have less choice.
+That's how the Apple Store works, right?
+You know, they give you relatively few
+choices, and it
+turns out people are happier if they have
+fewer choices.
+Or, so that's the lore.
+I don't know if that's true at all.
+But at any rate, this makes me happy that
+there's fewer
+choices, because I'm the kind of person
+that, if there's lots
+of choices, I tinker around with them and
+then I look,
+and it's like an hour later and I've done
+nothing, okay?
+So this smaller set of styles helps,
+actually
+helps people like me that are over
+tinkerers.
+And as far as I'm concerned, the default
+style looks really nice.
+And so I wouldn't, you know, it seems,
+seems fine.
+So that's actually a nice component of R
+studio presenter.
+And either with RStudio Presenter or
+Slidify, you know, remember, ultimately
+all this
+is, is using R as a front end to create an
+HTML5 slide deck.
+So if you have a little CSS or HTML
+knowledge, you
+can make either RStudio Presenter or
+Slidify as elaborate as you'd like.
+And you know the, the big step is
+deciding that you want a reproducible
+presentation with R
+embedded in your presentation building
+software, and then I
+think either of these solutions will work
+quite well.
+

@@ -1,0 +1,64 @@
+Okay, let's try this out.
+Up here you're seeing the Slidify from the
+talk that I was just giving.
+Or the lecture I was just giving.
+But, let's try authoring a new one.
+So I've done library slidify to make sure
+it's loaded in.
+[SOUND] There we go.
+Alright.
+Let's, Let's see.
+Oh, it's author, right?
+Author test.
+Let me just try that, test.
+Oh man that looks good.
+[NOISE] let's see.
+Oh look over here.
+There's tests.
+Let's look at that file, the index.rmd
+file.
+There we go.
+Lets put in a title.
+Test title.
+Okay.
+Subtitle, sub test title.
+Author, me.
+Job, well, my real job is kind of messing
+around on the internet, but, so I'll just
+put internet.
+Okay.
+alright.
+Read and delete.
+Let's keep that where it's at, keep all
+that stuff where it's at.
+But let me just put a little test thing
+there,
+test slide two, just to make sure it does
+slide two.
+Alright, I've saved it, alright.
+Oh look, and it gave a little thing here
+that reminds me that it switched to the
+slide directory.
+Alright, so I'm going to cu-, I'm going to
+try slidify.
+Look, it can autocomplete index.R
+markdown.
+See look what, what it did.
+It processed the R code.
+It copied a bunch of frameworks and the
+highlighter that's, that's
+from the eamle up here, we'll talk about
+that in a minute.
+But then now let's I actually like, I like
+to
+have Knitr loaded when I work on Slidify
+because there's
+this function browse URL and then I can
+just browse
+the, just type browse index.html it brings
+up my Slidify deck.
+There we go.
+There we go.
+Looks good.
+Really, really good.
+

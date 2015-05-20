@@ -1,0 +1,128 @@
+Okay, so let's talk about how you get
+your shinyapps.io account for creating
+your course project.
+You want to go to www.shinyapps.io/
+coursera.
+The, our studio folks want to, you know,
+get
+some numbers on how many people are coming
+from Coursera
+and have some of a special log in process,
+but it looks identical to an ordinary
+ShinyApps account otherwise.
+Then you just want to click on create an
+account.
+You can pick to link your account to
+GitHub or Google.
+Since you already have a GitHub account
+for
+the class, you might as well just use
+GitHub.
+When you click on it, it will have an
+access request from GitHub.
+And if you're logged into GitHub, it will
+automatically
+log you into your ShinyApps using your
+GitHub login.
+So it takes you to this page and it says,
+hi, you must be new here.
+And it talks about needing to install
+ShinyApps and R Package.
+And there's this handy little Getting
+Started
+Guide you should click on right here.
+The first thing it wants you to do, is to
+install devtools.
+If you've made it this far in the class
+without having to install dev, devtools,
+I'm quite surprised.
+However, nonetheless, you can get devtools
+directly from CRAN with the
+install.packages.
+I would say if you're in Windows, I'm not
+sure
+if this devtools requires it, but I would
+also install Rtools,
+which is the collection of Windows
+executables that has a
+bunch of Unix style commands to help you
+build R packages.
+So, let's assume you have devtools
+installed, and
+with devtools you can install directly
+from GitHub.
+And that's what this command right here
+says.
+Install devtools::install_github.
+R studio shinyapps, that will install the
+shinyapps package.
+You should also have Shiny installed,
+which you
+can get directly from CRAN as well with
+install.packages.
+CRAN, Shiny.
+Then going back to ShinyApps.io, you'll
+probably of noticed
+the secret key and this little two buttons
+right
+here, one will show you your key, secret
+key,
+and the other one will copy it to the
+clipboard.
+You want to click on copy it to the
+clipboard, and that'll copy a set of
+commands.
+You want to go back to R and paste those
+into the command line.
+Now deploying your app is staggeringly
+easy.
+You want to make sure you've done library
+ShinyApps, that you're in the directory
+with
+your shiny application, that you've done
+run
+app, and made sure that it works locally.
+And then now it's time to deploy it.
+You simply type deployApp() and if you've
+gotten
+your se, secret key typed in correctly and
+you've
+created your account correctly, then it
+will deploy the app on the shiny server.
+It'll, it'll actually take a little bit of
+time,
+where it goes through a bunch of checks
+and
+things like that, but then, you can then
+check
+on the shinyapps.io website to make sure
+that it's running.
+So here's the result from my account when
+I typed in deployapp for that
+simplest app that was in the GitHub
+repository, for the class.
+You can see here, get my pen, you can
+see here, that it is that app name
+simplestApp.
+Then right here, you have a couple things
+that you can look at.
+Dashboard, which is, is shown right here.
+We'll click on applications in a second.
+And then accounts is all account settings.
+So I have one app running.
+I have zero pending.
+I have zero archived.
+Now, this one that's running, let's look
+at our
+applications by clicking on applications
+and see what it says.
+Okay.
+So, here is the name of that app that's
+running.
+That link will pop open a new window and
+actually show you the app as it's running.
+It gives you it's is, it gives you it's
+status and so on.
+And over here it can show you the ones
+that are running, pending, and archived.
+

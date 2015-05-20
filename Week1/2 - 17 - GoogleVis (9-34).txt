@@ -1,0 +1,307 @@
+This lecture is about the Google Vis art
+package.
+Google Vis provides an interface to the
+Google Vis API.
+The API is designed to allow you to make
+plots that appear in the HTML pages.
+So for example you could make geo plots
+which show distribution of data across
+geographical, surfaces, scatter plots just
+like you
+would in R but made available over HTML.
+And other kinds of charts like column
+charts and a
+large number of other kinds of interactive
+data visualizations, that
+are all made possible by the GoogleViz
+API, the GoogleViz
+R package wraps these visualizations in
+simple to use R commands.
+So the basic idea is the R function
+creates an
+HTML page, and then the HTML page calls
+Google Chart's API.
+And the result is an interactive or
+clickable HTML graphic.
+So here's an example, I'm loading the
+Google base
+package and you can see I'm using this
+SuppressPackageStartupMessages.
+Just so a large message isn't printed when
+I load that library.
+And then I'm going to create a GoogleVis
+Motion Chart with this command here.
+So gvisMotionChart, and I'm going to send
+it the fruits data set,
+which is one of the basic data sets in,
+the R distribution.
+And I'm going to plot, fruit versus year,
+and I'm going to
+set the options to set the particular size
+of the data visualization.
+Then what I could do if I was working in R
+interactively I could say plot
+M, but since I'm using this in a
+slidify presentation I'm showing it a
+different way.
+I'm saying print M, chart, and what that
+will do is it
+will print out the chart so that we could
+see it here.
+And you can see if I play with this chart
+it's sort of interactive, you can slide
+time forward to backward
+and see the plot of sales versus expenses
+colored by there
+location, for example, and the chart is
+interactive in this way.
+These are similar to the types of charts
+that Hans Rosling, created in his famous
+TED talk
+and so it's very cool that you can
+create this sort of visualization with
+just one command.
+In GoogleVis the types of charts that
+you're going
+to be making all start with gvis, that's
+the
+beginning of the visualization function
+name plus the name
+of the chart type that you want to make.
+So as we saw in the previous slide,
+gvisMotionChart makes a motion chart.
+GvisGeoChart makes a map of the world.
+gvisTable makes a table of, that's
+interactive, and then you can
+make more standard plots like line charts,
+column charts, and tree maps.
+If you go to the Google Vis help file, it
+will
+tell you a lot more about all the other
+types of plots.
+I've only shown a subset of the types of
+plots
+that can be created with the Google Vis
+package here.
+So on Maps, here's what the kind of plot
+that you can make.
+So here I'm using gvisGeoChart, which
+creates a geo chart.
+And again, I pass it the data frame, this
+is the Exports data frame.
+And I tell it what location variable I
+want to use.
+That location can either be passed as a
+latitude colon longitude, or as a set of
+names, and then I tell it what variable
+to color by, in this case this profit
+variable.
+And again, I'm just setting the options to
+make
+the height and the width a particular
+size, and
+then I print that geo chart in R, if
+you're doing this interactively, you would
+do plot G.
+And so what you can see here is a chart
+that's been created that's also
+interactive, and so it's a map.
+But if you mouse over say, for example,
+United States, it tells you what the
+values of the profit variable are for all
+of the countries that appear in the
+dataset.
+So it's a quick way to make an interactive
+geographic plot.
+You can also specify a specific region, so
+like here I've, I
+used the exact same command I used a
+minute ago, with this gvisGeoChart.
+And I passed at the same data set and I
+told it to plot
+the same location and variable but, now, I
+say look at one specific region.
+I say, region 150 that region denotes
+Europe in this gvisGeoChart call.
+And, so when I plot that graphic I see
+only
+the European countries highlighted and
+it's still an interactive graph.
+So the question is how did I figure out
+which region
+to plot using this option here passed to
+the options list.
+The way that you find the options to pass
+to that options list is to go to the
+configuration options component of the
+help files on Google
+developers for the particular chart that
+you care about.
+So here I am looking at the geo chart
+options, and
+I can see along the configuration options,
+a large number of parameters.
+These are the names of the parameters you
+might use, and then it tells
+you what kind of, what type of r object
+you can pass through it.
+And then what is the default parameter
+that is
+going to be set by default when using the
+visualization.
+And then the description of how you can
+more flexibly use that parameter
+to find two new graphics to be exactly how
+you want them to be.
+So here's an example from setting a lot
+more options, this is
+taken directly from the top given by the
+Google Vis creator himself.
+And so the idea is I've built this data
+frame here, and I want to build a simple
+line chart.
+And so here I'm going to use a
+gvisLineChart to make that line chart.
+I'm going to pass it this simple data
+frame.
+The x variable is going to be the label.
+The y variable are going to be these two
+values.
+And then, I can pass it a long list of
+options.
+You can see it gets cut off a little bit
+here.
+But, the options is just a list, where I
+passed particular parameter values
+from the, line up of configuration
+options, on the Google Vis website.
+And, the values that I'd like them to
+have.
+So for example, in the horizontal axis,
+I've set the title
+to be My Label, and this text style color
+to be blue.
+I can also say, for example, that the
+vertical axis.
+It's going to have a different title,
+title value one percent and then it's
+going to tell you the format for the way
+you want that to be displayed.
+These can be quite flexible, and involve a
+little bit of digging into the google
+vis api in order to be totally flexible in
+the way you make these plots.
+But the result is a line chart where you
+can
+customize the color of the line that you
+see here.
+The axes, and all the information about
+where
+the cutoff lines will be, and so forth.
+All that information that you can
+customize using the Google Biz API.
+To combine multiple plots together, you
+can actually
+create quite nice visualizations that are
+multiple panel plots.
+And the way to do that is to create,
+several different, Googlevis objects so
+the first step is
+I create a Googlevis geo chart, then I
+create
+a Googlevis ta, interactive table, and a
+Googlevis motion chart.
+I can then merge them together, two at a
+time.
+So first I merge together the geo chart
+and the table, and so I set horizontal
+to be equal to false, in other words I
+stack them on top of each other.
+And then I merge together, the this merged
+object, and the motion chart, and I set
+horizontal equal to be true, so these two
+charts will be next to the motion chart.
+Notice that I set up the lengths and
+widths so that
+these charts will match up to each other
+on the next slide.
+And so here you can see when I print this
+chart I get interactive GEO chart up in
+the corner.
+An interactive table over here on this
+side.
+And then a motion chart over here.
+And they're all linked together.
+And so in this particular plot, in the
+Slidify side, it looks
+a little bit strange with this extra gray
+space around the plots.
+But if you make this plot on your own
+using the code that I've shown here
+you'll see that it creates a very nice
+website with all three figures linked to
+each other.
+You can actually look directly at the HTML
+code with these plots as well.
+Here, I've created a gviz motion chart,
+again just using
+the simple command where I pass up the
+fruits data.
+And then I tell it what I want the outcome
+variable and the time variable to be.
+And then when I type print the, and then
+pass it motion
+chart object, this is actually the html
+that is being used to create that object.
+So you can go in and look at the html and
+see how it's been coded up and
+if you want to you can directly edit the
+html if you know about CSS and HTML
+coding.
+You can do a large number of things with
+Google Vis.
+You can embed them in web sites using this
+HTML code.
+In other words, you can just take this
+HTML code
+right out and plug it in to a web site.
+You can create dynamic visualizations
+using the Shiny server which we talked
+about, in this data products class, or
+with the Rook and R.rsp, frameworks.
+You can also embed them in R markdown
+based documents.
+You basically do that by setting results
+equals quote, asis in the chunk options.
+That's what I've done.
+You can look at the slides code for these
+slides to see how that works.
+And you can do it with both kniter and
+slidify.
+So you can embed them with interactive
+documents.
+You can put them on the web and you can
+share them with your friends.
+For more information, and to see a whole
+bunch
+of other, googleVis plots, you can, load
+the googleVis
+package and then type demo(googleVis), and
+it'll go through
+plot by plot, explaining to you how those
+plots work.
+The vignette is actually very, very good,
+the vignette written by the
+developer in Google Vis, and then the
+documentation is quite extensive as well.
+If you want to get some inspiration for
+different kinds of
+graphs that you can use with the Google
+Vis API, you can
+go here to the chart gallery from Google
+and then here
+is a set of frequently asked questions
+about the Google Vis API.
+If you need to get more information about
+how that back end to this R package works.
+

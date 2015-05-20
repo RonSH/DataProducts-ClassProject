@@ -1,0 +1,380 @@
+[BLANK_AUDIO]
+Hi everyone.
+This is the second lecture about Yhat
+which is, which is
+a web service that allows you to deploy
+things like R
+functions and prediction algorithms built
+in R onto the web so
+that it could, they can be accessed via
+an, an API.
+So in the first lecture I talked about how
+to write your function.
+How to load the data, how to deploy R onto
+the Yhat platform.
+But I didn't talk about how you can access
+this function
+that you just deployed, and so that's what
+this lecture is about.
+And so I'm going to talk about just three
+very simple ways that you
+can access your algorithm, now that it's
+been uploaded to the Yhat server.
+Yeah, if I'm not a, you know a ve, a web
+programmer or a front end
+developer by any definition of the word,
+so
+I'm not going to talk about how to build a
+web site or how to, you know, build a
+JavaScript interface but, you know, those
+who are can go ahead and, and use the REST
+interface sorry the REST API and it is.
+It is fairly straightforward to kind of
+build a web front and that
+can later be translated into like a mobile
+app or something like that.
+So I just want to talk about just the
+basic interface into your function that
+you've just.
+Uploaded to Yhat.
+Recall last time that the function I
+talked about was a, was a, a way
+to estimate what's the average level of
+pollution, at any point in the United
+States.
+And the idea is that we took the U.S. EPA
+monitoring network and, and if you gave it
+a point.
+It would find the closest monitors within
+a certain mile radius.
+Let's say 20 or 30 miles that you specify.
+And it would just take the average
+of those monitors over that within that
+radius.
+And that would kind of be an estimate of
+the level
+of air pollution at any point in the
+United States.
+So, now we've got that function uploaded
+into R sorry, into Yhat.
+How do we access it?
+So, this is what I'm going to talk about
+in this lecture.
+[SOUND]
+So the first thing you're going to need to
+do is
+to go to the Yhat website, which is just
+yhathq.com,
+and log into your account that you should
+have already
+created in order to upload your code in
+the first place.
+Once you've logged in, this is the
+dashboard that you'll see.
+This is my account here.
+You can see I've got my username here, and
+I've got my API key here, which is very
+important.
+I've only got one model uploaded here, and
+that's this Pollutant model that we talked
+about.
+And you see that you got, I got the green
+symbol which means
+it's online, so it's a good sign, that
+means it's ready to run.
+So the first very simple way that you can
+run your model, is just in the Yhat
+website itself.
+So if I click on my model.
+And I go to Documentation.
+First it'll give the the REST API, the
+Post URL that
+you can use to access it from another type
+of service.
+And I'll go back to that in a second.
+But you can actually type in some code
+right here into the into the box here.
+And it has to be valid JSON, so you have
+to be able
+to use that understand that format, but
+that's a fairly straight forward format.
+Mostly just associative arrays.
+So if you recall, our function takes three
+arguments.
+One's the latitude, the other is the
+longitude of
+the location where you want to make the
+prediction of air
+pollution, and the last is the radius
+which, which
+just determines the number of monitors
+that you look at.
+So let's just start typing away here,
+we'll type some [INAUDIBLE]
+the first is the longitude and I'll just
+say what was Baltimore?
+It was minus 76.61 and then we want the
+latitude, which I believe was 39.28.
+And I'm very, messed it up.
+And the last is the radius, which we'll
+say, let's say 50 miles here.
+And we can hit Save over here.
+And we'll run our model.
+And you can see that it ran our model.
+And the output again, is [INAUDIBLE] a
+JSON format.
+So you can see, this is the input I gave
+it.
+Latitude raise is 50, longitude, was minus
+76.61, and you can see that the average PM
+2.5 was 8.97 micrograms per meter cubed,
+and
+the average ozone was about 0.04 parts per
+million.
+And so, that's basically the output that
+you will
+get from your model, and it ran on the
+server.
+Because we already uploaded it [COUGH] so
+that's a very simple approach.
+And you can [INAUDIBLE] just test to see
+if your model's working or not.
+And and if you can see that it's
+thankfully it's working.
+So we can move on to some other
+approaches.
+[BLANK_AUDIO]
+So the second approach is just to access
+the API from within R itself.
+So, one of the nice things about using a
+service like
+Yhat, is that if you want to distribute
+your function in your code.
+There may be large data sets.
+For example, we had to get all of the
+entire EPA monitoring network data set
+that may be involved in running your code
+and it would be really, a little unwieldy
+to have to distribute the entire data set
+and all the, all the, I have
+assorted data that go with it, to every
+single person who wanted to run your code.
+So the nice thing is now, even if you
+don't create a web app or anything fancy
+like that.
+If you want to distribute your
+functionality and your algorithm to
+people.
+You can just give, you can distribute a
+very light
+weight function that just you know,
+provides the, an interface
+into the code and then the, then the code
+itself
+can run on a server with all the data
+that's necessary.
+So the first thing that I can do is load
+the yhatr package,
+which has not been installed, so I'll
+install it first.
+[SOUND] Okay, now that it's been
+installed, I can actually load it.
+[SOUND] And the key function you're
+going to
+want to use, use here is called the
+yhat.predict
+function, which they basically call as
+your code
+and sends it the, the, the input data.
+With the first thing we're going to
+want to put create
+is a little data frame has the input data.
+So I'll just put, I'll call it df, it'll
+be a data frame, and again
+it has to have those variables, so the
+latitude s going to be let's say, 39, 28.
+The longitude is going to be minus 76.61,
+and the radius
+will be let's maybe we'll try 60 miles
+this time.
+So that's going to be my input data frame
+as,
+you can see it looks like this and then I
+want to call yhatpredict oh sorry, excuse
+me, before I,
+I call yhatpredict, I need to create my
+configuration variable.
+And so, I can create my, I'll just create,
+call it yhat.config.
+And it's going to be a vector containing
+my user name, API key, and the URL.
+So first it's going to be my username, and
+just my email address here.
+[SOUND] Next is my API key, and that's,
+you're
+going to have to cut and paste from the
+website here.
+[BLANK_AUDIO]
+[SOUND] Oops [SOUND] and the last is the
+environment here, which is just going to
+be
+[SOUND] Just the first part
+of this URL here.
+[SOUND] Okay, so I've got my yhat.config
+vector I've got my inputs there,
+so I just need to call the yhat.predict
+function to get my predictions out.
+So I can call yhat.predict.
+[SOUND] And, you get the model name
+pollutant, as
+you recall [SOUND] and just the input data
+here.
+And you see that the results of the model
+come back relatively quickly.
+I've got my input here, my latitude, my
+radius and my longitude here
+and then I've got the PM 2.5 which is 8.9
+micrograms per meter cubes.
+And ozone is about 0.44 parts per million.
+So that, you can actually send it a
+whole data frame of latitude, longitude,
+and radius.
+You don't have to just give it one at a
+time.
+I just decided to give it one.
+So can you give it a whole [INAUDIBLE]
+your data frame could have many rows,
+and it will make the prediction just based
+on the way that we wrote the function.
+And it will interpolate, you know,
+depending on, no matter what latitude
+or longitude you give it, it
+will interpolate based on taking local
+averages.
+Of monitors within a certain, within 60
+miles of, of location that you specified.
+So, that's a really nice light weight way
+to make a prediction function available
+to people without having to give them the
+entire data set and everything else
+involved, they can just run a a really
+small little function and get the
+same kind of power that you would get by
+kind of downloading an entire R package.
+So
+the last way I'm going to talk about
+accessing the Yhat API is, it's very
+simple.
+It just uses Curl from the command line,
+but you can actually use Curl to
+kind of to send information to the
+website, and it, and it will send you.
+Something back in JSON, and so, this is a
+relatively
+primitive way to do things, but it's
+something that can
+be embedded in, in n script, in a much
+larger
+script written in a more kind of
+appropriate scripting language.
+So you can just call Curl from the command
+line if
+you have it installed, if you don't have
+it installed don't
+worry to much about it but you just give
+it the
+post argument and you can tell it JSON is
+coming it's way.
+[SOUND]
+And then you give it your user in,
+information.
+So it's just going to be your username a
+colon and
+then your API key, which again I need to
+look up.
+[SOUND]
+So I'll be here.
+And I'll paste it in.
+The next thing I need to do is, is give it
+the data.
+So this, again this has to be valid JSON,
+so it's
+a little awkward to type but we can do it
+here.
+So the longitude again is going to be
+minus 76.61, the latitude is 39.28.
+And the radius is going to be 60.
+So it's not unlike when we were typing it
+into the website itself.
+And then we just need to give it the URL
+for the model.
+So, you can find that on your dashboard
+again.
+You go to the, you click on the model, and
+go to the Documentation.
+Now you need to paste in this entire thing
+here.
+So I'll Paste that in.
+And you can see that when the model, when
+I sent
+the model out sent the data out, the model
+comes back.
+With again, with the data that you'd
+expect, my input, my latitude,
+my radius, my longitude, and again it
+gives me the PM 2.5.
+And the ozone that we got, which is, which
+is the
+same result that, that we got when we
+called it from R.
+So again, the output's in JSON, you'll
+probably need a, a post processing
+type of script to kind of process the JSON
+and put it in a format
+that is a little bit more readable, but
+again this is something you
+can embed in a shell script, in a Pearl or
+Python type of script.
+So tha, so that's kind of a, a nice way to
+Embed a kind of Yhat type of algorithm
+that you've deployed, into more of a kind
+of systems programming type of framework.
+Okay, so that was the three very simple
+ways to access a Yhat algorithm.
+And so I talked about you accessing it
+from, from R.
+Using the website itself to kind of type
+some code.
+And also to using Curl to directly call
+the website from the command line.
+So, there are obviously many other ways
+that you could access
+the, the, the web, the, sorry, the API
+that Yhat provides.
+And I'm not going to talk about them here.
+But we, for example web front ends would
+be the most kind of obvious way.
+There are a lot of examples on the Yhat
+website where I've kind of, web
+apps that you can develop using the
+kind of, prediction algorithms deployed on
+their back end.
+So it, I encourage you to.
+To take a look at their documentation,
+take a
+look at the examples that they've got
+there, and to
+see what kind of, what you can deploy, and
+what you'd
+be, what would be kind of interesting to,
+to run.
+So that's it for Yhat.
+There's a lot I could talk about but I
+think
+I want to leave it there, just so, I
+encourage you
+to kind of try the service out, try to
+deploy some
+functions, get things running, and then
+take it from there.
+

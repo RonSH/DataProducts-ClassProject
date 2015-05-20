@@ -1,0 +1,262 @@
+Hi!
+My name is Brian Caffo, and this is
+the lecture on Shiny in the Data Products
+class.
+This class is co-taught with my
+collaborators, Jeff Leek and Roger Peng.
+We're all in the Department of
+Biostatistics at
+the Johns Hopkins Bloomberg School of
+Public Health.
+Okay, so what is Shiny?
+Shiny is a platform for creating
+interactive R programs in a web page.
+Let's give an example.
+So your boss comes in, and you've created
+a prediction algorithm, and
+they want you to put it up in a format so
+that lots of users can access it.
+And they don't all have to come to you to
+get
+their predictions, they want to be able to
+point and click them.
+But, you want to be able to do it quickly.
+You know, you don't want to, to involve,
+what,
+you know, legitimate web development and
+these other things.
+So at any rate, using Shiny, the, the time
+to create simple
+yet powerful web based interactive data
+products in R is, is minimized.
+You know, it, it lacks the flexibility of
+full-featured and complex solutions where
+you create a, a,
+you know, a full web interface on, you
+know,
+from scratch and, and call servers that
+you've designed.
+But, but, on the other hand, the
+development cost
+is, is so small using a tool like Shiny.
+At any rate, Shiny is made by the fine
+folks at, at our studio which
+is a, a, you know, a product that
+we really support and highlight in this
+series.
+So some mild prerequisites.
+And since I am not a web developer, maybe
+I'm
+not the best person to be teaching this
+class, I don't
+even play a web developer on T.V., but let
+me
+give you my understanding of
+the prerequisites, there's some mild
+prerequisites.
+So Shiny doesn't really require it, but
+with all web programming,
+you know, you need to know a little bit of
+HTML.
+At the bare minimum, you have to know some
+HTML and some, you know, a little bit of
+CSS
+and JavaScript is certainly going to be
+helpful to
+be effective with Shiny, just a little
+bit, not much.
+Much.
+So if you haven't seen these things
+before, you know HTML
+gives the web page structure and
+sectioning as well as markup instruction.
+CSS is, is the style and then JavaScript
+is, is basically
+most webpages that have interactivity,
+it's
+JavaScript that's giving you the
+interactivity.
+So certainly you wouldn't come to us
+as PhD statisticians to learn about web
+development.
+And there's so many tutorials online that
+you can get them
+from so many places that I would hesitate
+to even recommend one.
+The Shiny, the style it uses is this
+so-called bootstrap style which has
+no relation to the statistics bootstrap,
+which,
+as far as I'm concerned, looks nice.
+And, more importantly, I think it, it, you
+know, whenever you
+develop a little Shiny app, to me it
+always seems to render
+nicely on mobile platforms kind of
+automatically, which is the benefit of
+using this sort of highly polished style
+guide and platform with bootstrap.
+So look it up.
+It's I, I, I, I believe it's made by the
+folks at Twitter.
+So what else is out there?
+There's another product I, that I've you
+know,
+I, I, I feel like we have to mention.
+If you really want a great solution, and
+you know
+a lot of web programming kind of
+client-server programming, then
+you can do your own solution in a variety
+of
+ways and, you know, with some CGI script
+type thing.
+But, you know, that's way too in-depth for
+this class, focused on people who know
+R and know some statistics and want to
+deploy what they are developing quickly.
+There is also this great project by,
+called OpenCPU, by a person named Jerome
+Ooms.
+It is, which is, it's a great product,
+it's I
+think probably more flexible than Shiny
+but again it, it requires,
+requires much more kind of knowledge of
+web programming to,
+to really be able to implement, not much,
+but, but more.
+But I think it is a more flexible platform
+for doing these sorts of things.
+He even hosts an OpenCPU server but then
+he
+also shows you how you can create your
+own.
+So let's give a context.
+You've created a novel prediction
+algorithm to predict risk for diabetes.
+And you're hoping patients and caregivers
+will be able
+to enter their data and if needed take
+preventative measures.
+And you want to create a website so that
+users
+can input, input the relevant predictors
+and obtain their prediction.
+Your prediction algorithm, okay, so, you
+know, you're
+not, you're not going to win a Nobel prize
+for this one, is you take their glucose
+level and divide it by a hun, two hundred.
+And since this is an obviously serious
+topic there, here's a,
+a, link for a pretty simple but real
+prediction score for diabetes.
+But, you know, again I would emphasize
+about prediction scores,
+it depends on who the, the, the, proposed
+clientele is.
+The clientele that have been referred to a
+clinical, to a clinic,
+are going to be different in entering in
+different values than if you were
+asking everyone who has the, the slightest
+potential idea that they might have
+diabetes without having seen a caregiver,
+these two groups would be very different.
+So at any rate, I, I just want to point
+out that
+there's, you know, a lot of intricacy in
+creating prediction algorithms.
+So let's go through it, you know, make
+sure
+you have, a good nice late release of R
+installed.
+If you're on Windows, you gotta have
+Rtools installed.
+You can grab Shiny from CRAN with
+install.packages.
+You've gotta say library Shiny which I
+won't repeat from now on.
+There's, you know, mostly what I'm
+going to
+do in this is go through the tutorial
+at, at Rstudio but, hopefully, in a, in a
+little bit more didactic and simple way.
+So, basically, we're just going to go
+through the, their tutorial.
+I also, I'm a huge fan of Rstudio's
+manipulate function, huge fan of it.
+So, often, if you want to do something in
+Shiny, but you just want to do it for
+yourself
+or you're going to do it for someone else
+who
+uses Rstudio, manipulate is this awesome
+simple little function.
+It handles so many like little tiny nice
+special cases and I really like it.
+rCharts will be covered in a different
+lecture
+for interactive graphics that use some
+modern JavaScript libraries.
+So how do you create a Shiny project?
+You need two parts.
+One is you need a file named ui.r, and
+they have to be in the same directory.
+One you need a file named ui.r, and one
+you need a file name server.r.
+So you need those two files, if you have
+those two files.
+So here's the, here's the minimal, here's
+a minimal UI.r function.
+You're going to say library Shiny just to
+make sure that Shiny's loaded.
+You have the Shiny UI function and you say
+page with sidebar which
+gives you the page format, and I'll, which
+we'll see in a minute.
+I'm going to give a header that says data
+science for the win and a sidebar
+panel that, where I label it with sidebar
+text so we know where it's
+at, and then in the main panel I'm going
+to put mainpanel.txt.
+Some important things to, to note, that
+the h3
+is just the third level heading, third
+level HTML heading.
+So I'm just saying I want this.
+You know, basically what Shiny's going to
+do is it's going to translate
+this into the third level HTML heading, on
+the fly for you.
+So it's going to be that size, so and
+it's, you know, I, hopefully the notation
+is clear.
+H1, I'll give you h1 heading, h2 will give
+you
+h2 heading, key will give you that guy and
+so on.
+And then my Server.r it's going to do
+nothing.
+But I just need this function shinyServer;
+it takes
+input and output, and returns in this case
+null.
+Okay?
+To run it, you change into the directories
+with these files and type run app.
+Or you can, or you can put the path as an
+argument.
+And it should open up a browser window
+with the app running.
+So here's kind of what it would look like.
+It, it's chopping off, it's chopping off
+part of the main panel just to make it
+fit on the, on the page for me here when I
+cropped it as an image.
+But here's, you know, it renders the text,
+Hello Shiny!
+Here's sidebar.
+

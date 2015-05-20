@@ -1,0 +1,222 @@
+[SOUND] A slide in Slidify is demarked by
+the 3 dashes at
+the in between, they need to be in a line
+all by themselves.
+I, I find in Slidify the often the biggest
+way I'm messing things up, is
+I have text that's sort of touching when
+it needs a new line in between it.
+So, you know, always check that.
+The two pound signs have a, there's,
+there, there's I think it's 2 pound signs
+I believe is H1, the HTML equivalent of H,
+H1, when it, the mark down gets rendered.
+Let's see, these like .class pound ID.
+This is how you can add slide, slide
+specific
+options to that, to that slide, in slide
+of [UNKNOWN].
+It looks like this kind of format here
+but, but before you do that, I would
+get used to just using ordinary Slidify
+before
+you started messing around with the slides
+specific changes.
+okay.
+Then, when you're done, you compile your R
+markdown file with Slidify.
+We've seen how to do that.
+And then, if you have knitr installed you
+can do browseURL.
+If not, you can just open up Explorer or
+whatever it's called and whatever or,
+operating system you're using, and
+double-click on the
+HTML file, it'll bring it up for you.
+[BLANK_AUDIO].
+And by the way, after you've recompiled,
+after
+you've reslidified it, you then, you can
+just
+switch over to your browser and type
+Control
+R, or Apple R, or whatever refreshes the
+page.
+You don't have to actually reload the
+slide every time.
+[BLANK_AUDIO].
+Okay.
+So, how do you publish things?
+Well,
+there's a couple of ways you can do it.
+So you have, a, you know, if you do it as
+stand-alone, for example.
+You just have stand-alone HTML with all
+the libraries in a file there.
+You can put it on wherever.
+If, you, you know, if you have some space
+to host it on the web.
+If you want to publish it to GitHub, you,
+you can create a new empty repository and
+then
+Slidify has a command that's just publish
+GitHub
+user, then the repo that you want it in.
+And if you're one of the people like us
+that actually often host
+websites off of GitHub, yeah, using GitHub
+pages, then this is particularly nice,
+because not only can you put the Slidify
+code in the HTML on
+GitHub but you can actually web host it
+off of GitHub as well.
+So some, that's the easy way.
+Slidify has some other ways of publishing
+if, if you
+have a public Dropbox folder it will copy
+it to Dropbox
+and then, you know, just like you can host
+an
+HTML file off of Dropbox you can do it
+that way.
+You can put the HTML file wherever you'd
+like.
+I tend to use GitHub but you know, there's
+there's other options as well.
+You know, if you can, you can actually
+just send the HTML file, the, the, the
+zip, zipped up directory to someone if you
+want to never have it be hosted on the
+internet.
+So there's different frameworks.
+Here's some of the different frameworks.
+I tend to use IO so I, that was first.
+But they, you know, some of these HTML
+effects are actually pretty fancy.
+So you should check 'em out.
+They're, a lot of 'em are really neat.
+[UNKNOWN] is pretty easy if you have
+reason to include math.
+So if you do X squared in single dollar
+signs
+you get X raised to the power of 2, like
+that,
+or X carry 2 is X raised to the power
+2, your YAML has to have Mathjax loaded in
+the widgets.
+Mathjax is a mathematics rendering
+JavaScript library, so here
+is an example right here of putting, the
+quadratic formula.
+[BLANK_AUDIO].
+There we go.
+Let's see.
+If you, if you actually, if you actually
+want to do some more advanced HTML then
+what what Markdown lets you do, just try
+putting the HTML in the Markdown file.
+99% of the time that just works.
+so, that's like, you know, images or
+tables where if you want more
+control than Markdown actually gives you,
+then you might just include the raw HTML.
+also, you know you can, you can always
+edit the final HTML, slide
+deck that you get out of Slidify, but you
+know, again, I wouldn't,
+you know, I wouldn't say this is the best
+solution like if you're
+going to do that why not have just coded
+in HTML to begin with?
+The whole point of doing Slidify is that
+you can embed your R Code.
+But anyway, it's sometimes useful in a
+pinch if you're, you know,
+frantically preparing course slides at the
+last minute like me and you
+just have something that you can't change,
+and you can't figure out
+how to do in Slidify but you know how to
+use the HTML.
+And then you can do whatever else you
+normally do in a web page after you're
+done.
+But again, it, it, you know, it's, you
+know, to to me, it it ruins a lot of the
+utility of Slidify if you don't you know,
+do it
+with the sl, do basically everything with
+the Slidify command.
+There's a lot better web development
+solutions if you're removing the condition
+that you want com, to compile the R code
+along with the presentation.
+If you, if you, if you remove
+that requirement, then there's so many web
+authoring
+tools that, that I, I don't think
+at that point Slidify wouldn't be
+competitive anymore.
+The only reason is, is to use it for this
+specific purpose where you're using R.
+Or may, you know, maybe if you happen to
+be
+familiar with R and not too familiar with
+other web technologies.
+So it's actually kind of interesting, you
+you can add interactive elements to
+Slidify.
+You can add things like quiz questions,
+you can have it where the web
+page can accept quiz questions, and give
+hints and it has a very nice format.
+You can add in, interactive R chart plots,
+you can add Shiny apps,
+you know of course all these things are,
+you know, standard HTML things.
+You can do it directly with the HTML
+slash JavaScript but ramness has coded
+this directly
+into Slidify, and I give the link here
+where you can see some of these examples.
+So, you know, we'll do one.
+[BLANK_AUDIO].
+So here's the R markdown syntax.
+Right, so here's the R markdown syntax,
+yeah, I
+would just write question 1, what's 1 plus
+1?
+I would say, here's my set of answers, and
+I'd
+put, underscores around 2 here, because
+that's the correct answer.
+I'd put a hint of this form and I put an
+explanation of this form and that's the
+the slide syntax, okay, that I would use,
+and
+then it looks like this when it comes up.
+So if I do 1, and I try submit answers it
+says no
+you're wrong, if I try 3, submit answer,
+it says no you're wrong.
+If I try 4, submit it, no, you're wrong.
+Darn it, this is a hard question.
+Maybe I could ask for a hint.
+It says this is a hint.
+That's a pretty useful hint, now I know
+the answer is 2.
+And then now I can submit and show the
+answer,
+which might drop down an explanation,
+except it's getting chopped
+off because of how I'm recording the
+screen, but it
+just says this is an explanation, it's got
+a little okay.
+The style here is the Twitter, Twitter
+boot strap style.
+[BLANK_AUDIO].
+You can clear it and try it again, this
+time I'm confident I can get the right
+answer.
+
